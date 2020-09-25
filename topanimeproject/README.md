@@ -66,3 +66,15 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+
+
+
+
+
+
+
+
+
+ideas -- making too many api requests with axios.all. so therefore, we can have a menu, and each menu will be a different call to the api. one menu will display top anime, the other menu will display top airing etc. 
