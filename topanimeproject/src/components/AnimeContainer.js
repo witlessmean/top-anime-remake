@@ -1,13 +1,35 @@
+import React from 'react';
+import { useState, useEffect } from 'react';
+import aniData from "../utils/api";
+import animeContainerStyles from "./animeContainerStyles.module.css";
 
-import React from 'react'
-import animeContainerStyles from "./animeContainerStyles.module.css"
 
-const animeContainer = () => {
+
+const AnimeContainer = () => {
+   
+    const [pics, setPics] = useState([])
+
+    useEffect(() => {
+    
+    aniData.get("/anime/1/airing").then((anime) => {
+      console.log(anime)
+    
+        setPics(anime)
+    
+    }).catch((error) => {
+      console.log(console.log(error))
+    })
+    
+    return () => {
+        console.log('cleanup in useEffect')
+      }
+    }, [])
+   
     return (
-        <div className="container">
+        <>
             
-        </div>
+        </>
     )
 }
 
-export default animeContainer
+export default AnimeContainer

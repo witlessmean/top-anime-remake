@@ -77,4 +77,9 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 
 
-ideas -- making too many api requests with axios.all. so therefore, we can have a menu, and each menu will be a different call to the api. one menu will display top anime, the other menu will display top airing etc. 
+ideas -- making too many api requests with axios.all. so therefore, we can have a menu, and each menu will be a different call to the api. one menu will display top anime, the other menu will display top airing etc. We will have to create the axios instance again considering it will be used many times. 
+
+responsiveness/testing/accessibility 
+
+
+--new idea: finishing site for fun. will be very simple. starting another site using anidb and graphQL for a much more comprehensive site. Only planning on having top pics that you can scroll through and get information on. 
