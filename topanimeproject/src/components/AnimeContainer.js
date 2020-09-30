@@ -1,8 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import aniData from "../utils/api";
-import animeContainerStyles from "./animeContainerStyles.module.css";
-
 
 
 const AnimeContainer = () => {
@@ -25,6 +23,7 @@ const AnimeContainer = () => {
       }
     }, [])
    
+    
     return (
         <>
             

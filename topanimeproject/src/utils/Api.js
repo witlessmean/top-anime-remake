@@ -13,5 +13,5 @@ import axios from 'axios';
   export default aniData
 
 
-  //finish creating instance. we will use this instance inside of components that need the api. this should mean that there will be eight components considering the amount of api calls, and each one of those should be structurally quite similar. We will Likely use context so they can receive the swipers. Maybe we actually used styled components and export the component style considering they'll all be the same? 
+
 
