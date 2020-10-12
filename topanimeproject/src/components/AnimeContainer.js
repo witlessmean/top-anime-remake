@@ -1,34 +1,35 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import aniData from "../utils/api";
+// import React from 'react';
+// import { useState, useEffect } from 'react';
+// import aniData from "../utils/api";
 
 
-const AnimeContainer = () => {
+// const AnimeContainer = () => {
    
-    const [pics, setPics] = useState([])
+//     const [pics, setPics] = useState([])
 
-    useEffect(() => {
+//     useEffect(() => {
     
-    aniData.get("/anime/1/airing").then((anime) => {
-      console.log(anime)
+//     aniData.get("/anime/1/airing").then((anime) => {
+//       console.log(anime)
     
-        setPics(anime)
+//         setPics(anime)
     
-    }).catch((error) => {
-      console.log(console.log(error))
-    })
+//     }).catch((error) => {
+//       console.log(console.log(error))
+//     })
     
-    return () => {
-        console.log('cleanup in useEffect')
-      }
-    }, [])
+//     return () => {
+//         console.log('cleanup in useEffect')
+//       }
+//     }, [])
    
+//     console.log('hello this is console')
     
-    return (
-        <>
+//     return (
+//         <>
             
-        </>
-    )
-}
+//         </>
+//     )
+// }
 
-export default AnimeContainer
+// export default AnimeContainer
