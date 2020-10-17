@@ -4,20 +4,24 @@ import { v4 as uuidv4 } from "uuid";
 import appStyles from "./appStyles.module.css";
 import animeContainer from "./components/AnimeContainer";
 import Nav from "./components/Nav"
-import aniData from "./utils/api";
-import { UrlContext } from "./contexts/UrlContext";
+import apiData from "./utils/api";
+import { AnimeUrlContext } from "./contexts/AnimeUrlContext";
+import { MangaUrlContext } from "./contexts/MangaUrlContext";
+import { MangaDataContext } from "./contexts/MangaDataContext";
 
 const App = () => {
-  const [pics, setPics] = useState([]);
-  const [url, setUrl] = useState("airing");
+  
+  const [currentPics, setCurrentPics] = useState([])
+  const [animeUrl, setAnimeUrl] = useState("airing");
+  const [mangaUrl, setMangaUrl] = useState("manga");
+  const [mangaData, setMangaData] = useState([])
 
   useEffect(() => {
-    aniData
-      .get(`/anime/1/${url}`)
+    apiData
+      .get(`/anime/1/${animeUrl}`)
       .then((anime) => {
-        console.log(anime.data.top);
-
-        setPics(anime.data.top);
+        setCurrentPics(anime.data.top)
+        
       })
       .catch((error) => {
         console.log(console.log(error));
@@ -26,25 +30,40 @@ const App = () => {
     return () => {
       console.log("cleanup in useEffect");
     };
-  }, []);
+  }, [animeUrl]);
+  
+  useEffect(() => {
+    apiData
+      .get(`/manga/1/${mangaUrl}`)
+      .then((manga) => {
+        setMangaData(manga.data.top)
+      })
+      .catch((error) => {
+        console.log(console.log(error));
+      });
+
+    return () => {
+      console.log("cleanup in useEffect");
+    };
+  }, [mangaUrl]);
+  
+  
   return (
     <div>
-      <UrlContext.Provider value={{ url, setUrl }}>
+      <AnimeUrlContext.Provider value={{ animeUrl, setAnimeUrl }}>
+        <MangaUrlContext.Provider value={{mangaUrl, setMangaUrl}}>
+        <MangaDataContext.Provider value={{mangaData, setMangaData}}>
         <Nav style={{margin: 100}} />
-        {pics.map((topPic) => {
+        {currentPics.map((topPic) => {
           return <img src={topPic.image_url} key={uuidv4()} />;
         })}
-      </UrlContext.Provider>
+      </MangaDataContext.Provider>
+      </MangaUrlContext.Provider>
+      </AnimeUrlContext.Provider>
     </div>
   );
 };
 
 export default App;
 
-//we have to make the url itself a dynamic state.
-
-//what we need to do is create a state here, and then add that state to our dynamic url. Then pass that state to the nav so we can make the buttons there.
-
-
-
-//the problem is that the useEffect doesn't rerender. add something to the dependency array or just run another useEffect.
+//We have the data we need inside of the nav, now we need to work on the funtionality of the button. 

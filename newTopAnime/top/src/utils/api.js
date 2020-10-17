@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
- const aniData = axios.create({
+ const apiData = axios.create({
 
     baseURL: "https://jikan1.p.rapidapi.com/top/", 
     headers: {
@@ -10,4 +10,4 @@ import axios from 'axios';
       }
   });
 
-  export default aniData
+  export default apiData

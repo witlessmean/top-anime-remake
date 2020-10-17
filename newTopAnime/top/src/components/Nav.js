@@ -1,24 +1,32 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import Button from '@material-ui/core/Button';
-import {UrlContext} from '../contexts/UrlContext' 
-
+import {AnimeUrlContext} from '../contexts/AnimeUrlContext' ;
+import {MangaUrlContext} from '../contexts/MangaUrlContext';
+import {MangaDataContext} from '../contexts/MangaDataContext';
 
 const Nav = () => {
     
-const { url, setUrl } = useContext(UrlContext)
-
-
+const { animeUrl, setAnimeUrl } = useContext(AnimeUrlContext);
+const { mangaUrl, setMangaUrl } = useContext(MangaUrlContext);
+const { mangaData, setMangaData } = useContext(MangaDataContext);
+console.log(mangaData)
+const navOnClick = (topOption) => {
+    setAnimeUrl(topOption)
+}
     
-
+const mangaButton = (topMangaOption) => {
+  setMangaData(topMangaOption)
+}
 
     
     return (
         <div>
-            <input type='button' value={url} onClick={() => {
-              setUrl('upcoming')
-            }} />
+            <input type='button' value={animeUrl} onClick={() => navOnClick('upcoming')}/>
+            {/* <input type='button' value={mangaUrl} onClick={() => mangaButton('manga')} />  */}
+            
         </div>
     )
 }
 
 export default Nav
+
