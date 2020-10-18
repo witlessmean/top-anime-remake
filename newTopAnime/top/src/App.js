@@ -8,6 +8,7 @@ import apiData from "./utils/api";
 import { AnimeUrlContext } from "./contexts/AnimeUrlContext";
 import { MangaUrlContext } from "./contexts/MangaUrlContext";
 import { MangaDataContext } from "./contexts/MangaDataContext";
+import { CurrentPicsContext } from "./contexts/CurrentPicsContext";
 
 const App = () => {
   
@@ -17,39 +18,25 @@ const App = () => {
   const [mangaData, setMangaData] = useState([])
 
   useEffect(() => {
-    apiData
-      .get(`/anime/1/${animeUrl}`)
-      .then((anime) => {
-        setCurrentPics(anime.data.top)
-        
+    const animePromise = apiData.get(`/anime/1/${animeUrl}`);
+    const mangaPromise = apiData.get(`/manga/1/${mangaUrl}`);
+
+      Promise.all([animePromise, mangaPromise]).then((promiseContent) => {
+          
+          setCurrentPics(promiseContent[0].data.top);
+          setMangaData(promiseContent[1].data.top);
+      }).catch((error) => {
+        console.log('error in fetching api content', error)
       })
-      .catch((error) => {
-        console.log(console.log(error));
-      });
 
     return () => {
-      console.log("cleanup in useEffect");
-    };
-  }, [animeUrl]);
-  
-  useEffect(() => {
-    apiData
-      .get(`/manga/1/${mangaUrl}`)
-      .then((manga) => {
-        setMangaData(manga.data.top)
-      })
-      .catch((error) => {
-        console.log(console.log(error));
-      });
-
-    return () => {
-      console.log("cleanup in useEffect");
-    };
-  }, [mangaUrl]);
-  
+      console.log('cleanup')
+    }
+  }, [animeUrl, mangaUrl])
   
   return (
     <div>
+      <CurrentPicsContext.Provider value={{ currentPics, setCurrentPics }}>
       <AnimeUrlContext.Provider value={{ animeUrl, setAnimeUrl }}>
         <MangaUrlContext.Provider value={{mangaUrl, setMangaUrl}}>
         <MangaDataContext.Provider value={{mangaData, setMangaData}}>
@@ -60,10 +47,9 @@ const App = () => {
       </MangaDataContext.Provider>
       </MangaUrlContext.Provider>
       </AnimeUrlContext.Provider>
+      </CurrentPicsContext.Provider>
     </div>
   );
 };
 
 export default App;
-
-//We have the data we need inside of the nav, now we need to work on the funtionality of the button. 
