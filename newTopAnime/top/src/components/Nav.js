@@ -1,31 +1,21 @@
-import React, { useContext } from 'react';
-import Button from '@material-ui/core/Button';
-import {AnimeUrlContext} from '../contexts/AnimeUrlContext' ;
-import {MangaUrlContext} from '../contexts/MangaUrlContext';
-import {MangaDataContext} from '../contexts/MangaDataContext';
-import {CurrentPicsContext} from '../contexts/CurrentPicsContext';
+import React, { useContext, useState } from 'react';
+import {NavStateContext} from '../contexts/NavStateContext';
+import AnimeButton from './buttons/AnimeButton';
+import MangaButton from './buttons/MangaButton';
 
 const Nav = () => {
     
-const { currentPics, setCurrentPics } = useContext(CurrentPicsContext)
-const { animeUrl, setAnimeUrl } = useContext(AnimeUrlContext);
-const { mangaUrl, setMangaUrl } = useContext(MangaUrlContext);
-const { mangaData, setMangaData } = useContext(MangaDataContext);
+const { navState, setNavState } = useContext(NavStateContext)
 
-console.log(mangaData)
-const navOnClick = (topOption) => {
-    setAnimeUrl(topOption)
-}
-    
-const mangaButton = (topMangaOption) => {
-  setMangaData(topMangaOption)
-}
+
 
     
     return (
         <div>
-            <input type='button' value={animeUrl} onClick={() => navOnClick('upcoming')}/>
-            {/* <input type='button' value={mangaUrl} onClick={() => mangaButton('manga')} />  */}
+             <AnimeButton />
+             <MangaButton />    
+            {navState}
+
             
         </div>
     )
@@ -33,3 +23,7 @@ const mangaButton = (topMangaOption) => {
 
 export default Nav
 
+
+//there is an error when pressing any of the manga buttons more than once. we need to somehow make pressing the manga buttons the same as pressing the anime buttons. the difference happens to be with the extra state setter in the mangabutton 
+
+//make a state for the navbar and change that state with the click of a button. 
