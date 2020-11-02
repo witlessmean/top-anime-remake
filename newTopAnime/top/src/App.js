@@ -1,21 +1,25 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom'; 
 import appStyles from "./appStyles.module.css";
 import animeContainer from "./components/AnimeContainer";
 import Nav from "./components/Nav"
 import apiData from "./utils/api";
+import AnimePage from './components/AnimePage';
+import MangaPage from './components/MangaPage';
 import { AnimeUrlContext } from "./contexts/AnimeUrlContext";
 import { MangaUrlContext } from "./contexts/MangaUrlContext";
 import { MangaDataContext } from "./contexts/MangaDataContext";
 import { AnimeDataContext } from "./contexts/AnimeDataContext";
-import { CurrentPicsContext } from "./contexts/CurrentPicsContext";
+import { CurrentAnimePicsContext } from "./contexts/CurrentAnimePicsContext";
+import { CurrentMangaPicsContext } from "./contexts/CurrentMangaPicsContext";
 import { NavStateContext } from "./contexts/NavStateContext";
 
 const App = () => {
   
   const [navState, setNavState] = useState([]);
-  const [currentPics, setCurrentPics] = useState([]);
+  const [currentAnimePics, setCurrentAnimePics] = useState([]);
+  const [currentMangaPics, setCurrentMangaPics] = useState([]);
   const [animeUrl, setAnimeUrl] = useState("airing");
   const [mangaUrl, setMangaUrl] = useState("manga");
   const [mangaData, setMangaData] = useState([]);
@@ -26,10 +30,10 @@ const App = () => {
     const mangaPromise = apiData.get(`/manga/1/${mangaUrl}`);
 
       Promise.all([animePromise, mangaPromise]).then((promiseContent) => {
-          
-          setCurrentPics(promiseContent[0].data.top);
           setAnimeData(promiseContent[0].data.top);
           setMangaData(promiseContent[1].data.top);
+          setCurrentAnimePics(promiseContent[0].data.top);
+          setCurrentMangaPics(promiseContent[1].data.top)
       }).catch((error) => {
         console.log('error in fetching api content', error)
       })
@@ -39,26 +43,33 @@ const App = () => {
     }
   }, [animeUrl, mangaUrl])
     
-  return (
+    return (
+      <Router>
     <div>
-      <CurrentPicsContext.Provider value={{ currentPics, setCurrentPics }}>
+      <CurrentAnimePicsContext.Provider value={{ currentAnimePics,setCurrentAnimePics }}>
+        <CurrentMangaPicsContext.Provider value={{currentMangaPics, setCurrentMangaPics}}>
       <NavStateContext.Provider value={{ navState, setNavState }}>
       <AnimeDataContext.Provider value={{ animeData, setAnimeData }}>
       <AnimeUrlContext.Provider value={{ animeUrl, setAnimeUrl }}>
         <MangaUrlContext.Provider value={{ mangaUrl, setMangaUrl }}>
         <MangaDataContext.Provider value={{ mangaData, setMangaData }}>
         <Nav style={{margin: 100}} />
-        {currentPics.map((topPic) => {
-          return <img src={topPic.image_url} key={uuidv4()} />;
-        })}
+        <Switch>
+        <Route exact path="/"> {<AnimePage/>} </Route>
+        <Route path="/manga"> {<MangaPage/>} </Route>
+        </Switch>
       </MangaDataContext.Provider>
       </MangaUrlContext.Provider>
       </AnimeUrlContext.Provider>
       </AnimeDataContext.Provider>
       </NavStateContext.Provider>
-      </CurrentPicsContext.Provider>
+      </CurrentMangaPicsContext.Provider>
+      </CurrentAnimePicsContext.Provider>
     </div>
+    </Router>
   );
 };
 
 export default App;
+
+

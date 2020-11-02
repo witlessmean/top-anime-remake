@@ -24,6 +24,4 @@ const { navState, setNavState } = useContext(NavStateContext)
 export default Nav
 
 
-//there is an error when pressing any of the manga buttons more than once. we need to somehow make pressing the manga buttons the same as pressing the anime buttons. the difference happens to be with the extra state setter in the mangabutton 
-
-//make a state for the navbar and change that state with the click of a button. 
+ 

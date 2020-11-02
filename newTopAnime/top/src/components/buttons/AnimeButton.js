@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import {NavStateContext} from '../../contexts/NavStateContext';
 import AnimeInputs from './AnimeInputs'
 
@@ -11,9 +12,9 @@ const { navState, setNavState } = useContext(NavStateContext);
 return (
         
         <div>
-            <button type="button" onClick={() => {
-              setNavState(<AnimeInputs/>)
-            }}>Anime</button>
+            <NavLink to="/"><button type="button" onClick={() => {
+            setNavState(<AnimeInputs/>)
+            }}>Anime</button></NavLink>
 
         </div>
 
