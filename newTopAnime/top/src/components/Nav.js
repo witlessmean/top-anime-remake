@@ -5,7 +5,7 @@ import MangaButton from './buttons/MangaButton';
 
 const Nav = () => {
     
-const { navState, setNavState } = useContext(NavStateContext)
+const { navState } = useContext(NavStateContext)
 
 
 

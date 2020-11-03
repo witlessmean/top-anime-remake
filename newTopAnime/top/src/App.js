@@ -1,8 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom'; 
-import appStyles from "./appStyles.module.css";
-import animeContainer from "./components/AnimeContainer";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
+import { GlobalStyle } from './reusableStyles'
 import Nav from "./components/Nav"
 import apiData from "./utils/api";
 import AnimePage from './components/AnimePage';
@@ -43,10 +42,12 @@ const App = () => {
     }
   }, [animeUrl, mangaUrl])
     
-    return (
+  //console.log(animeData)
+  return (
+      <>
+      <GlobalStyle />
       <Router>
-    <div>
-      <CurrentAnimePicsContext.Provider value={{ currentAnimePics,setCurrentAnimePics }}>
+    <CurrentAnimePicsContext.Provider value={{ currentAnimePics,setCurrentAnimePics }}>
         <CurrentMangaPicsContext.Provider value={{currentMangaPics, setCurrentMangaPics}}>
       <NavStateContext.Provider value={{ navState, setNavState }}>
       <AnimeDataContext.Provider value={{ animeData, setAnimeData }}>
@@ -54,10 +55,12 @@ const App = () => {
         <MangaUrlContext.Provider value={{ mangaUrl, setMangaUrl }}>
         <MangaDataContext.Provider value={{ mangaData, setMangaData }}>
         <Nav style={{margin: 100}} />
+        
         <Switch>
-        <Route exact path="/"> {<AnimePage/>} </Route>
-        <Route path="/manga"> {<MangaPage/>} </Route>
+        <Route exact path="/"> <AnimePage/> </Route>
+        <Route path="/manga"> <MangaPage/> </Route>
         </Switch>
+        
       </MangaDataContext.Provider>
       </MangaUrlContext.Provider>
       </AnimeUrlContext.Provider>
@@ -65,8 +68,8 @@ const App = () => {
       </NavStateContext.Provider>
       </CurrentMangaPicsContext.Provider>
       </CurrentAnimePicsContext.Provider>
-    </div>
     </Router>
+    </>
   );
 };
 
