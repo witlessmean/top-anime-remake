@@ -1,17 +1,20 @@
 import React, { useContext } from 'react'
 import { CurrentAnimePicsContext } from '../contexts/CurrentAnimePicsContext';
 import { v4 as uuidv4 } from "uuid";
-import { Wrapper } from '../reusableStyles'
-
+import { StyledContainer, Wrapper } from '../reusableStyles'
 
 const AnimePage = () => {
 
 const { currentAnimePics } = useContext(CurrentAnimePicsContext);
 
-    return (
+console.log(currentAnimePics)
+    
+
+
+return (
         <Wrapper>
                     {currentAnimePics.map((topPic) => {
-          return <img src={topPic.image_url} alt='animeImg' key={uuidv4()} />;
+          return  <StyledContainer key={uuidv4()}> <div><img src={topPic.image_url} alt='animeImg'/></div> <div>{topPic.title}</div> </StyledContainer> ;
         })}
         </Wrapper>
     )

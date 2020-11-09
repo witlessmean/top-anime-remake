@@ -1,5 +1,6 @@
 import React, {useContext}from 'react'
 import {AnimeUrlContext} from '../../contexts/AnimeUrlContext' ;
+import { StyledInputs } from '../../reusableStyles';
 
 
 const AnimeInputs = () => {
@@ -14,7 +15,7 @@ const AnimeInputs = () => {
     
     
     return (
-        <div>
+        <StyledInputs>
                   <ul>
                   <li><input type='button' value='upcoming' onClick={(e) => animeButton('upcoming')}/></li>
                   <li><input type='button' value='airing' onClick={(e) => animeButton('airing')}/> </li>
@@ -25,7 +26,7 @@ const AnimeInputs = () => {
                   <li><input type='button' value='bypopularity' onClick={(e) => animeButton('bypopularity')}/></li>
                   <li><input type='button' value='favorite' onClick={(e) => animeButton('favorite')}/></li>
                   </ul>
-        </div>
+        </StyledInputs>
     )
 }
 

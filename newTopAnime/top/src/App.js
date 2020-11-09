@@ -29,6 +29,7 @@ const App = () => {
     const mangaPromise = apiData.get(`/manga/1/${mangaUrl}`);
 
       Promise.all([animePromise, mangaPromise]).then((promiseContent) => {
+       
           setAnimeData(promiseContent[0].data.top);
           setMangaData(promiseContent[1].data.top);
           setCurrentAnimePics(promiseContent[0].data.top);
@@ -42,7 +43,7 @@ const App = () => {
     }
   }, [animeUrl, mangaUrl])
     
-  //console.log(animeData)
+  console.log(animeData)
   return (
       <>
       <GlobalStyle />

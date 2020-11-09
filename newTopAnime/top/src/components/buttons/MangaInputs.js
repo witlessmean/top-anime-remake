@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {MangaUrlContext} from '../../contexts/MangaUrlContext';
-
+import { StyledInputs } from '../../reusableStyles';
 
 
 const MangaInputs = () => {
@@ -14,7 +14,7 @@ const { mangaUrl, setMangaUrl } = useContext(MangaUrlContext);
       }
     
     return (
-        <div>
+        <StyledInputs>
             <ul>
             <li><input type='button' value='manga' onClick={(e) => mangaButton('manga') } /></li>
             <li><input type='button' value='novels' onClick={(e) => mangaButton('novels') } /></li>
@@ -25,7 +25,7 @@ const { mangaUrl, setMangaUrl } = useContext(MangaUrlContext);
             <li><input type='button' value='bypopularity' onClick={(e) => mangaButton('bypopularity') } /></li>
             <li><input type='button' value='favorite' onClick={(e) => mangaButton('favorite') } /></li>
             </ul>
-        </div>
+        </StyledInputs>
     )
 }
 
