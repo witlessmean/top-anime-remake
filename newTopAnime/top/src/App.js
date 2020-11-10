@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { GlobalStyle } from './reusableStyles'
 import Nav from "./components/Nav"
 import apiData from "./utils/api";
-import AnimePage from './components/AnimePage';
-import MangaPage from './components/MangaPage';
+import AnimePage from './components/animeComponents/AnimePage';
+import MangaPage from './components/mangaComponents/MangaPage';
 import { AnimeUrlContext } from "./contexts/AnimeUrlContext";
 import { MangaUrlContext } from "./contexts/MangaUrlContext";
 import { MangaDataContext } from "./contexts/MangaDataContext";
@@ -43,7 +43,7 @@ const App = () => {
     }
   }, [animeUrl, mangaUrl])
     
-  console.log(animeData)
+  
   return (
       <>
       <GlobalStyle />

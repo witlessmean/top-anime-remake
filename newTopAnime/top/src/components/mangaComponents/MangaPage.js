@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import { CurrentMangaPicsContext } from '../contexts/CurrentMangaPicsContext';
+import { CurrentMangaPicsContext } from '../../contexts/CurrentMangaPicsContext';
 import { v4 as uuidv4 } from "uuid";
-import { Wrapper } from '../reusableStyles';
+import { Wrapper } from '../../reusableStyles';
 
 const MangaPage = () => {
 

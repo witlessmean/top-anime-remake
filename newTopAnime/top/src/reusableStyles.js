@@ -12,6 +12,7 @@ html {
   }
   body { 
     background-color: #eae7dc; 
+    font-family: 'Nunito', sans-serif;
     font-size: 1.6rem;
   }
   `
@@ -23,27 +24,39 @@ html {
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;`
-  
+      
+
 
 ///////container////////
 
 export const StyledContainer = styled.div`
+border: 2px solid rgb(27, 23, 23);
+border-radius: 8px;
 margin: 10px;
-background-color: red;
-width: 300px;
+background-color: rgba(27, 23, 23, 0.2);
+width: 400px;
 height: 300px;
 display: flex;
 overflow: hidden;
-div img {
-  border-radius: 8px;
+
+div { 
+  margin-right: 15px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //background-color: rgba(27, 23, 23, 1); 
 }
-div { background-color: yellow; }
+
+  div a {
+    text-decoration: none;
+    color: black;
+  }
 `
-// img{
-    
-//   width:  200px;
-// height: 200px;
-// object-fit: cover;
+export const StyledInfoContainer = styled.div`
+display: flex;
+flex-direction: column;
+`
 /////////////Inputs/////////////
 
 export const StyledInputs = styled.div`
@@ -75,3 +88,9 @@ ul li input{
   //click on titles themselves to be sent to myanimelist link. 
 
   //score, rank, episodes, start date and end date
+
+  //if statement to be able to make anime/manga nav disappear
+
+  //add the text for what is clicked
+
+  //make components for the title etc
