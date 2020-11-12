@@ -24,4 +24,5 @@ return (
 
 export default AnimePage
 
+//i think make the map as a utility function, and then move it to the utils folder and import it here. don't know whether or not to make it as a component. Then we NEED to try and break this map up into smaller pieces. 
 
