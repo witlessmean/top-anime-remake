@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
-
+import { createMuiTheme } from '@material-ui/core/styles';
 
 export const GlobalStyle = createGlobalStyle`
 html {
@@ -14,6 +14,7 @@ html {
     background-color: #eae7dc; 
     font-family: 'Nunito', sans-serif;
     font-size: 1.6rem;
+    margin: 0;
   }
   `
 
@@ -72,13 +73,11 @@ list-style: none;
 display: inline;
 text-align: center;
 margin: 2px;
-}
 
-ul li input{
-    width: 100px;
-    height: 40px;
 }
 `
+
+
 
   //we will build out the container. i want the images as large as they can be. what we will do to compensate for this, is build out the container that they're all in to be the same size, and we will hide overflow. 
 
@@ -113,3 +112,5 @@ ul li input{
   //create logo 
 
   //readme
+
+  //have cursor next to buttons and when clicked the cursor goes away. fades. 

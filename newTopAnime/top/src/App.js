@@ -34,13 +34,13 @@ const App = () => {
     const mangaPromise = apiData.get(`/manga/1/${mangaUrl}`);
 
       Promise.all([animePromise, mangaPromise]).then((promiseContent) => {
-       
-          setLoading(false)
-
+      
           setAnimeData(promiseContent[0].data.top);
           setMangaData(promiseContent[1].data.top);
           setCurrentAnimePics(promiseContent[0].data.top);
           setCurrentMangaPics(promiseContent[1].data.top)
+
+          setLoading(false)
       }).catch((error) => {
         console.log('error in fetching api content', error)
       })

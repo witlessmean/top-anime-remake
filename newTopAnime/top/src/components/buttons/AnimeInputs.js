@@ -3,6 +3,7 @@ import {AnimeUrlContext} from '../../contexts/AnimeUrlContext' ;
 import { StyledInputs } from '../../reusableStyles';
 import Button from '@material-ui/core/Button';
 
+
 const AnimeInputs = () => {
     
     
