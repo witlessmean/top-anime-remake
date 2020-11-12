@@ -13,9 +13,13 @@ import { AnimeDataContext } from "./contexts/AnimeDataContext";
 import { CurrentAnimePicsContext } from "./contexts/CurrentAnimePicsContext";
 import { CurrentMangaPicsContext } from "./contexts/CurrentMangaPicsContext";
 import { NavStateContext } from "./contexts/NavStateContext";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+
+
 
 const App = () => {
-  
+  const log = console.log
   const [navState, setNavState] = useState([]);
   const [currentAnimePics, setCurrentAnimePics] = useState([]);
   const [currentMangaPics, setCurrentMangaPics] = useState([]);
@@ -23,6 +27,7 @@ const App = () => {
   const [mangaUrl, setMangaUrl] = useState("manga");
   const [mangaData, setMangaData] = useState([]);
   const [animeData, setAnimeData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const animePromise = apiData.get(`/anime/1/${animeUrl}`);
@@ -30,6 +35,8 @@ const App = () => {
 
       Promise.all([animePromise, mangaPromise]).then((promiseContent) => {
        
+          setLoading(false)
+
           setAnimeData(promiseContent[0].data.top);
           setMangaData(promiseContent[1].data.top);
           setCurrentAnimePics(promiseContent[0].data.top);
@@ -56,10 +63,9 @@ const App = () => {
         <MangaUrlContext.Provider value={{ mangaUrl, setMangaUrl }}>
         <MangaDataContext.Provider value={{ mangaData, setMangaData }}>
         <Nav style={{margin: 100}} />
-        
         <Switch>
-        <Route exact path="/"> <AnimePage/> </Route>
-        <Route path="/manga"> <MangaPage/> </Route>
+        <Route exact path="/"> { loading == true ? <CircularProgress>Loading....</CircularProgress> : <AnimePage/>} </Route>
+        <Route path="/manga"> { loading == true ? <CircularProgress>Loading....</CircularProgress> : <MangaPage/>} </Route>
         </Switch>
         
       </MangaDataContext.Provider>

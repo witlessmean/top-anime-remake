@@ -16,7 +16,7 @@ console.log(currentAnimePics)
 return (
         <Wrapper>
                     {currentAnimePics.map((topPic) => {
-          return  <StyledContainer key={uuidv4()}> <div><img src={topPic.image_url} alt='animeImg'/></div><StyledInfoContainer><div>{topPic.score}{ topPic.score > 7 ? <MoodIcon fontSize="large" style={{color: '#33b849'}} /> : <MoodBadIcon fontSize="large" style={{color: '#de3333'}} /> }</div> <div><a href={topPic.url}>{topPic.title}</a></div></StyledInfoContainer> </StyledContainer> ;
+          return  <StyledContainer key={uuidv4()}> <div><img src={topPic.image_url} alt='animeImg'/></div><StyledInfoContainer><div>{topPic.rank}</div><div>{topPic.score}{ topPic.score > 7 ? <MoodIcon fontSize="large" style={{color: '#33b849'}} /> : <MoodBadIcon fontSize="large" style={{color: '#de3333'}} /> }</div> <div><a href={topPic.url}>{topPic.title}</a></div><div>{topPic.start_date}</div><div>{topPic.episodes}</div></StyledInfoContainer> </StyledContainer> ;
         })}
         </Wrapper>
     )

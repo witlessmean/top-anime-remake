@@ -40,12 +40,14 @@ display: flex;
 overflow: hidden;
 
 div { 
-  margin-right: 15px;
+  //margin-right: 15px;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  //background-color: rgba(27, 23, 23, 1); 
+  //i know what's happening. with the flex grow, the other divs are growing too which is why those 2 things are so far apart. 
+  
+  background-color: rgba(27, 23, 23, 1); 
 }
 
   div a {
@@ -56,6 +58,7 @@ div {
 export const StyledInfoContainer = styled.div`
 display: flex;
 flex-direction: column;
+flex-grow: 1;
 `
 /////////////Inputs/////////////
 
@@ -83,8 +86,6 @@ ul li input{
 
   //to the container we will need to add the name, how many episodes it has etc. 
 
-  //loading spinner
-
   //click on titles themselves to be sent to myanimelist link. 
 
   //score, rank, episodes, start date and end date
@@ -94,3 +95,19 @@ ul li input{
   //add the text for what is clicked
 
   //make components for the title etc
+
+  
+  
+  
+  
+  //loading spinner
+
+  //dark mode
+
+  //make title of button show
+
+  //make it so you can make nav disappear when you press on anime/manga button 
+
+  //break apart map parts into smaller components. 
+
+  //create logo 
