@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { NavLink } from 'react-router-dom';
 
 export const GlobalStyle = createGlobalStyle`
 html {
@@ -76,7 +76,9 @@ margin: 2px;
 
 }
 `
-
+export const StyledNavLink = styled(NavLink)`
+text-decoration: none;
+`
 
 
   //we will build out the container. i want the images as large as they can be. what we will do to compensate for this, is build out the container that they're all in to be the same size, and we will hide overflow. 
@@ -114,3 +116,7 @@ margin: 2px;
   //readme
 
   //have cursor next to buttons and when clicked the cursor goes away. fades. 
+
+  //just design the fucking logo myself in paint. I only need to make 2 lines and i should be able to make a transparent background.
+
+  //add footer

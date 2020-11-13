@@ -3,7 +3,7 @@ import {NavStateContext} from '../contexts/NavStateContext';
 import AnimeButton from './buttons/AnimeButton';
 import MangaButton from './buttons/MangaButton';
 import styled from 'styled-components';
-import logo from '../images/logo.PNG'
+import Logo from '../Logo';
 
 const StyledDiv = styled.div`
 display: flex;
@@ -11,9 +11,9 @@ justify-content: center;
 align-items: center;
 padding: 0;
 height: 11vh;
-background-color: #cbebe3; 
+background-color: #273043; 
 `
-//whole nav going to be a different color like anichart. logo in the top left. 
+
 
 const Nav = () => {
     
@@ -24,7 +24,7 @@ const { navState } = useContext(NavStateContext)
     
     return (
        <>
-       <img style={{position: 'absolute'}} alt="website logo" src={logo} />
+       <Logo/>
        <StyledDiv>
              <AnimeButton />
              <MangaButton />    
