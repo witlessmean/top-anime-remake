@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
 import {NavStateContext} from '../../contexts/NavStateContext';
 import MangaInputs from './MangaInputs'
 import Button from '@material-ui/core/Button';

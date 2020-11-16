@@ -120,3 +120,5 @@ text-decoration: none;
   //just design the fucking logo myself in paint. I only need to make 2 lines and i should be able to make a transparent background.
 
   //add footer
+
+  //i want the button inputs to ease in and out. 

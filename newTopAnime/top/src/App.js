@@ -13,6 +13,8 @@ import { AnimeDataContext } from "./contexts/AnimeDataContext";
 import { CurrentAnimePicsContext } from "./contexts/CurrentAnimePicsContext";
 import { CurrentMangaPicsContext } from "./contexts/CurrentMangaPicsContext";
 import { NavStateContext } from "./contexts/NavStateContext";
+import { ChosenOptionContext } from './contexts/ChosenOptionContext';
+import ChosenOption from './components/ChosenOption';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 
@@ -20,13 +22,14 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 const App = () => {
   const log = console.log
-  const [navState, setNavState] = useState([]);
+  const [navState, setNavState] = useState(undefined);
   const [currentAnimePics, setCurrentAnimePics] = useState([]);
   const [currentMangaPics, setCurrentMangaPics] = useState([]);
   const [animeUrl, setAnimeUrl] = useState("airing");
   const [mangaUrl, setMangaUrl] = useState("manga");
   const [mangaData, setMangaData] = useState([]);
   const [animeData, setAnimeData] = useState([]);
+  const [option, setOption] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -57,6 +60,7 @@ const App = () => {
       <Router>
     <CurrentAnimePicsContext.Provider value={{ currentAnimePics,setCurrentAnimePics }}>
         <CurrentMangaPicsContext.Provider value={{currentMangaPics, setCurrentMangaPics}}>
+      <ChosenOptionContext.Provider value={{option, setOption}}>  
       <NavStateContext.Provider value={{ navState, setNavState }}>
       <AnimeDataContext.Provider value={{ animeData, setAnimeData }}>
       <AnimeUrlContext.Provider value={{ animeUrl, setAnimeUrl }}>
@@ -67,12 +71,12 @@ const App = () => {
         <Route exact path="/"> { loading == true ? <CircularProgress>Loading....</CircularProgress> : <AnimePage/>} </Route>
         <Route path="/manga"> { loading == true ? <CircularProgress>Loading....</CircularProgress> : <MangaPage/>} </Route>
         </Switch>
-        
       </MangaDataContext.Provider>
       </MangaUrlContext.Provider>
       </AnimeUrlContext.Provider>
       </AnimeDataContext.Provider>
       </NavStateContext.Provider>
+      </ChosenOptionContext.Provider>
       </CurrentMangaPicsContext.Provider>
       </CurrentAnimePicsContext.Provider>
     </Router>
