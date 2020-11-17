@@ -9,10 +9,6 @@ const AnimePage = () => {
 
 const { currentAnimePics } = useContext(CurrentAnimePicsContext);
 
-console.log(currentAnimePics)
-   
-
-
 return (
         <Wrapper>
                     {currentAnimePics.map((topPic) => {

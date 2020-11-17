@@ -14,7 +14,8 @@ import { CurrentAnimePicsContext } from "./contexts/CurrentAnimePicsContext";
 import { CurrentMangaPicsContext } from "./contexts/CurrentMangaPicsContext";
 import { NavStateContext } from "./contexts/NavStateContext";
 import { ChosenOptionContext } from './contexts/ChosenOptionContext';
-import ChosenOption from './components/ChosenOption';
+import { AniOpenContext } from './contexts/AniOpenContext';
+import { MangaOpenContext } from './contexts/MangaOpenContext';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 
@@ -22,14 +23,17 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 const App = () => {
   const log = console.log
-  const [navState, setNavState] = useState(undefined);
+  const [navState, setNavState] = useState([]);
   const [currentAnimePics, setCurrentAnimePics] = useState([]);
   const [currentMangaPics, setCurrentMangaPics] = useState([]);
   const [animeUrl, setAnimeUrl] = useState("airing");
   const [mangaUrl, setMangaUrl] = useState("manga");
   const [mangaData, setMangaData] = useState([]);
   const [animeData, setAnimeData] = useState([]);
-  const [option, setOption] = useState('');
+  const [option, setOption] = useState('Airing');
+  const [aniOpen, setAniOpen] = useState(false);
+  const [mangaOpen, setMangaOpen] = useState(false);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -53,13 +57,15 @@ const App = () => {
     }
   }, [animeUrl, mangaUrl])
     
-  
+  log(navState)
   return (
       <>
       <GlobalStyle />
       <Router>
     <CurrentAnimePicsContext.Provider value={{ currentAnimePics,setCurrentAnimePics }}>
         <CurrentMangaPicsContext.Provider value={{currentMangaPics, setCurrentMangaPics}}>
+      <AniOpenContext.Provider value={{aniOpen, setAniOpen}} >
+      <MangaOpenContext.Provider value={{mangaOpen, setMangaOpen}}>
       <ChosenOptionContext.Provider value={{option, setOption}}>  
       <NavStateContext.Provider value={{ navState, setNavState }}>
       <AnimeDataContext.Provider value={{ animeData, setAnimeData }}>
@@ -77,6 +83,8 @@ const App = () => {
       </AnimeDataContext.Provider>
       </NavStateContext.Provider>
       </ChosenOptionContext.Provider>
+      </MangaOpenContext.Provider>
+      </AniOpenContext.Provider>
       </CurrentMangaPicsContext.Provider>
       </CurrentAnimePicsContext.Provider>
     </Router>

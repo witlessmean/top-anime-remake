@@ -45,9 +45,7 @@ div {
   text-align: center;
   display: flex;
   justify-content: center;
-  align-items: center;
-  //i know what's happening. with the flex grow, the other divs are growing too which is why those 2 things are so far apart. 
-  
+  align-items: center;  
   background-color: rgba(27, 23, 23, 1); 
 }
 
@@ -121,4 +119,11 @@ text-decoration: none;
 
   //add footer
 
-  //i want the button inputs to ease in and out. 
+  //i want the button inputs to ease in and out. https://reactjs.org/docs/animation.html
+
+  //when i press anime/manga button, the inputs should appear under them. This is to avoid confusion considering that the manga btton will be right next to the inputs if i stay the current way.
+
+  //also right when the app starts, it should tell us that we're viewing airing. 
+
+  //maybe pass animeButton ANOTHER state and this state will have an open/closed or true/false. maybe somehow we can implement that/ 
+  //still have some console logging to do. maybe try and get into the navState object and see if we need to use that instead of just navState === something. 

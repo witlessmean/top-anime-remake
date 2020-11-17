@@ -3,23 +3,24 @@ import styled from 'styled-components';
 import { ChosenOptionContext } from '../contexts/ChosenOptionContext';
 
 const StyledDiv = styled.div`
-margin-top: 5vh ;
+margin: 5vh 2vw 5vh 2vw;
 display: flex;
 justify-content: center;
 align-content: center;
-height: 200px;
+font-family: 'Goldman', cursive;
+font-size: 4rem;
 `
 
 
 const Line = styled.div`
 background-color: black;
-height: 5px;
-width: 20px;
+height: 1vh;
+width: 10vw;
 `
 
 const ChosenOption = () => {
   
-    const { option, setOption } = useContext(ChosenOptionContext);
+    const { option } = useContext(ChosenOptionContext);
 
   
     return (
