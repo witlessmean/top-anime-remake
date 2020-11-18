@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import Tooltip from '@material-ui/core/Tooltip';
+import { withStyles } from '@material-ui/core/styles';
 
 export const GlobalStyle = createGlobalStyle`
 html {
@@ -85,6 +87,18 @@ export const StyledNavLink = styled(NavLink)`
 text-decoration: none;
 `
 
+//////////////////tooltip styles////////////////
+
+export const CustomTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: theme.palette.common.white,
+    color: 'rgba(0, 0, 0, 0.87)',
+    boxShadow: theme.shadows[4],
+    fontSize: 11,
+  },
+}))(Tooltip);
+
+
 
   //we will build out the container. i want the images as large as they can be. what we will do to compensate for this, is build out the container that they're all in to be the same size, and we will hide overflow. 
 
@@ -136,3 +150,5 @@ text-decoration: none;
   //still have some console logging to do. maybe try and get into the navState object and see if we need to use that instead of just navState === something. 
 
   //after app is finished, maybe get rid of animeData context all together. seems useless. 
+
+  //clean up this particular css page. we can use the arrows to make single lines and add nice glossary
