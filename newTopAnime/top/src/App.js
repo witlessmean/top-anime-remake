@@ -16,8 +16,7 @@ import { NavStateContext } from "./contexts/NavStateContext";
 import { ChosenOptionContext } from './contexts/ChosenOptionContext';
 import { AniOpenContext } from './contexts/AniOpenContext';
 import { MangaOpenContext } from './contexts/MangaOpenContext';
-import CircularProgress from '@material-ui/core/CircularProgress';
-
+import LoadingCircle from './components/LoadingCircle';
 
 
 
@@ -73,8 +72,8 @@ const App = () => {
         <MangaDataContext.Provider value={{ mangaData, setMangaData }}>
         <Nav style={{margin: 100}} />
         <Switch>
-        <Route exact path="/"> { loading == true ? <CircularProgress>Loading....</CircularProgress> : <AnimePage/>} </Route>
-        <Route path="/manga"> { loading == true ? <CircularProgress>Loading....</CircularProgress> : <MangaPage/>} </Route>
+        <Route exact path="/"> { loading == true ? <LoadingCircle>Loading....</LoadingCircle> : <AnimePage/>} </Route>
+        <Route path="/manga"> { loading == true ? <LoadingCircle>Loading....</LoadingCircle> : <MangaPage/>} </Route>
         </Switch>
       </MangaDataContext.Provider>
       </MangaUrlContext.Provider>
