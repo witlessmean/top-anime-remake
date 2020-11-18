@@ -6,18 +6,26 @@ import styled from 'styled-components';
 import Logo from '../Logo';
 import ChosenOption from './ChosenOption';
 
-const StyledDiv = styled.div`
+const StyledNavBar = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
-padding: 0;
-height: 11vh;
+flex-direction: column;
+height: 13vh;
 background-color: #273043; 
 -webkit-box-shadow: 0 10px 5px #888888;
   -moz-box-shadow: 0 10px 5px #888888;
   box-shadow: 0 10px 5px #888888;
 `
-
+const StyledInputsDiv = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+`
+const StyledButtonDiv = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;`
 
 const Nav = () => {
     
@@ -29,12 +37,13 @@ const { navState } = useContext(NavStateContext)
     return (
        <>
        <Logo/>
-       <StyledDiv>
-             <AnimeButton />
-             <MangaButton />    
-             
-            {navState}
-            </StyledDiv>
+       
+       <StyledNavBar>
+            <StyledButtonDiv> <AnimeButton />
+             <MangaButton /> 
+             </StyledButtonDiv>
+             <StyledInputsDiv>{navState}</StyledInputsDiv>
+            </StyledNavBar>
             <ChosenOption />
                             </>
                             )

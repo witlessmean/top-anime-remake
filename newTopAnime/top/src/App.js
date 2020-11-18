@@ -33,7 +33,6 @@ const App = () => {
   const [option, setOption] = useState('Airing');
   const [aniOpen, setAniOpen] = useState(false);
   const [mangaOpen, setMangaOpen] = useState(false);
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -57,7 +56,7 @@ const App = () => {
     }
   }, [animeUrl, mangaUrl])
     
-  log(navState)
+  log(animeData)
   return (
       <>
       <GlobalStyle />

@@ -24,8 +24,7 @@ return (
                 setNavState([])
                 setMangaOpen(false)
             }
-                console.log(aniOpen)
-                console.log(mangaOpen)
+
             }}>Manga</Button></StyledNavLink>
 
         </div>

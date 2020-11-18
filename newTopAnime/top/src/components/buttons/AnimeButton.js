@@ -24,8 +24,7 @@ return (
                     setNavState([])
                     setAniOpen(false)
                 }
-                    console.log(aniOpen)
-                    console.log(mangaOpen)
+
                 
             }}>Anime</Button></StyledNavLink>
 
@@ -35,3 +34,5 @@ return (
 }
 
 export default AnimeButton
+
+

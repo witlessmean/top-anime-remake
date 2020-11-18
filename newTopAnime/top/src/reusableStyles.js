@@ -31,29 +31,37 @@ html {
 ///////container////////
 
 export const StyledContainer = styled.div`
-border: 2px solid rgb(27, 23, 23);
+-webkit-box-shadow: 0 10px 5px #888888;
+-moz-box-shadow: 0 10px 5px #888888;
+box-shadow: 0 10px 5px #888888;
 border-radius: 8px;
 margin: 10px;
-background-color: rgba(27, 23, 23, 0.2);
+background-color: rgba(27, 23, 23, 0.1);
 width: 400px;
 height: 300px;
 display: flex;
 overflow: hidden;
 
 div { 
-  //margin-right: 15px;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;  
-  background-color: rgba(27, 23, 23, 1); 
+  
 }
 
   div a {
     text-decoration: none;
     color: black;
+    &:hover {
+      visibility: visible;
+    }
   }
+
 `
+
+
+
 export const StyledInfoContainer = styled.div`
 display: flex;
 flex-direction: column;
@@ -71,7 +79,6 @@ list-style: none;
 display: inline;
 text-align: center;
 margin: 2px;
-
 }
 `
 export const StyledNavLink = styled(NavLink)`
@@ -127,3 +134,5 @@ text-decoration: none;
 
   //maybe pass animeButton ANOTHER state and this state will have an open/closed or true/false. maybe somehow we can implement that/ 
   //still have some console logging to do. maybe try and get into the navState object and see if we need to use that instead of just navState === something. 
+
+  //after app is finished, maybe get rid of animeData context all together. seems useless. 
