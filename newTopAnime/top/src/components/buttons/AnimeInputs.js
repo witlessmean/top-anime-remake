@@ -1,6 +1,6 @@
 import React, {useContext}from 'react'
 import {AnimeUrlContext} from '../../contexts/AnimeUrlContext' ;
-import {ChosenOptionContext} from '../../contexts/ChosenOptionContext';
+import {ChosenAniOptionContext} from '../../contexts/ChosenAniOptionContext';
 import { StyledInputs } from '../../reusableStyles';
 import Button from '@material-ui/core/Button';
 
@@ -9,11 +9,11 @@ const AnimeInputs = () => {
     
     
     const { animeUrl, setAnimeUrl } = useContext(AnimeUrlContext);
-    const { option, setOption } = useContext(ChosenOptionContext);
+    const { chosenAniOption, setChosenAniOption } = useContext(ChosenAniOptionContext);
    
     const animeInputsButton = (topOption) => {
         setAnimeUrl(topOption)
-        setOption(topOption)
+        setChosenAniOption(topOption)
         }
     
     

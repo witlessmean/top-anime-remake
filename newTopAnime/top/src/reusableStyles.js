@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
-
+import Button from '@material-ui/core/Button';
 
 export const GlobalStyle = createGlobalStyle`
 html {
@@ -88,6 +88,17 @@ export const StyledNavLink = styled(NavLink)`
 text-decoration: none;
 `
 
+//////////////ChosenOption styles////////////////
+
+export const StyledOptionDiv = styled.div`
+margin: 5vh 2vw 5vh 2vw;
+display: flex;
+justify-content: center;
+align-content: center;
+font-family: 'Goldman', cursive;
+font-size: 4rem;
+`
+
 //////////////////tooltip styles////////////////
 
 export const CustomTooltip = withStyles((theme) => ({
@@ -98,6 +109,27 @@ export const CustomTooltip = withStyles((theme) => ({
     fontSize: 11,
   },
 }))(Tooltip);
+
+//////////////customizing material UI buttons////////////////////////
+
+export const CustomMainButton = withStyles({
+  root: {
+    width: '5vw',
+    height: '2.5em',
+    fontWeight: 'bolder',
+    fontSize: 17,
+    '&:active': {
+      boxShadow: 'none',
+      backgroundColor: '#c4dbf5',
+      borderColor: '#005cbf',
+    },
+    '&:focus': {
+      boxShadow: '0 0 0 0.2rem rgba(0,120,255,.8)',
+    },
+  },
+})(Button);
+
+
 
 
 
@@ -153,3 +185,11 @@ export const CustomTooltip = withStyles((theme) => ({
   //after app is finished, maybe get rid of animeData context all together. seems useless. 
 
   //clean up this particular css page. we can use the arrows to make single lines and add nice glossary
+
+  //https://material-ui.com/customization/typography/   use this link to look at how to use mediaQ's for fonts inside the buttons. 
+
+  //if anime is open and i click manga i need to erase the option. 
+
+  //FAQ page
+
+  //fix all the imports to be in order/more readable

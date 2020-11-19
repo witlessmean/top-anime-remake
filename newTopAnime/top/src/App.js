@@ -13,7 +13,8 @@ import { AnimeDataContext } from "./contexts/AnimeDataContext";
 import { CurrentAnimePicsContext } from "./contexts/CurrentAnimePicsContext";
 import { CurrentMangaPicsContext } from "./contexts/CurrentMangaPicsContext";
 import { NavStateContext } from "./contexts/NavStateContext";
-import { ChosenOptionContext } from './contexts/ChosenOptionContext';
+import { ChosenAniOptionContext } from './contexts/ChosenAniOptionContext';
+import { ChosenMangaOptionContext } from './contexts/ChosenMangaOptionContext';
 import { AniOpenContext } from './contexts/AniOpenContext';
 import { MangaOpenContext } from './contexts/MangaOpenContext';
 import LoadingCircle from './components/LoadingCircle';
@@ -21,7 +22,6 @@ import LoadingCircle from './components/LoadingCircle';
 
 
 const App = () => {
-  const log = console.log
   const [navState, setNavState] = useState([]);
   const [currentAnimePics, setCurrentAnimePics] = useState([]);
   const [currentMangaPics, setCurrentMangaPics] = useState([]);
@@ -29,7 +29,8 @@ const App = () => {
   const [mangaUrl, setMangaUrl] = useState("manga");
   const [mangaData, setMangaData] = useState([]);
   const [animeData, setAnimeData] = useState([]);
-  const [option, setOption] = useState('Airing');
+  const [chosenAniOption, setChosenAniOption] = useState('Airing');
+  const [chosenMangaOption, setChosenMangaOption] = useState('Manga');
   const [aniOpen, setAniOpen] = useState(false);
   const [mangaOpen, setMangaOpen] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -54,8 +55,7 @@ const App = () => {
       console.log('cleanup')
     }
   }, [animeUrl, mangaUrl])
-    
-  log(animeData)
+  
   return (
       <>
       <GlobalStyle />
@@ -64,7 +64,8 @@ const App = () => {
         <CurrentMangaPicsContext.Provider value={{currentMangaPics, setCurrentMangaPics}}>
       <AniOpenContext.Provider value={{aniOpen, setAniOpen}} >
       <MangaOpenContext.Provider value={{mangaOpen, setMangaOpen}}>
-      <ChosenOptionContext.Provider value={{option, setOption}}>  
+      <ChosenAniOptionContext.Provider value={{chosenAniOption, setChosenAniOption}}>  
+      <ChosenMangaOptionContext.Provider value={{chosenMangaOption, setChosenMangaOption}}>
       <NavStateContext.Provider value={{ navState, setNavState }}>
       <AnimeDataContext.Provider value={{ animeData, setAnimeData }}>
       <AnimeUrlContext.Provider value={{ animeUrl, setAnimeUrl }}>
@@ -72,15 +73,16 @@ const App = () => {
         <MangaDataContext.Provider value={{ mangaData, setMangaData }}>
         <Nav style={{margin: 100}} />
         <Switch>
-        <Route exact path="/"> { loading == true ? <LoadingCircle>Loading....</LoadingCircle> : <AnimePage/>} </Route>
-        <Route path="/manga"> { loading == true ? <LoadingCircle>Loading....</LoadingCircle> : <MangaPage/>} </Route>
+        <Route exact path="/"> { loading === true ? <LoadingCircle>Loading....</LoadingCircle> : <AnimePage/>} </Route>
+        <Route path="/manga"> { loading === true ? <LoadingCircle>Loading....</LoadingCircle> : <MangaPage/>} </Route>
         </Switch>
       </MangaDataContext.Provider>
       </MangaUrlContext.Provider>
       </AnimeUrlContext.Provider>
       </AnimeDataContext.Provider>
       </NavStateContext.Provider>
-      </ChosenOptionContext.Provider>
+      </ChosenMangaOptionContext.Provider>
+      </ChosenAniOptionContext.Provider>
       </MangaOpenContext.Provider>
       </AniOpenContext.Provider>
       </CurrentMangaPicsContext.Provider>

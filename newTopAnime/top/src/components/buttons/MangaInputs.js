@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {MangaUrlContext} from '../../contexts/MangaUrlContext';
-import {ChosenOptionContext} from '../../contexts/ChosenOptionContext';
+import {ChosenMangaOptionContext} from '../../contexts/ChosenMangaOptionContext';
 import { StyledInputs } from '../../reusableStyles';
 import Button from '@material-ui/core/Button';
 
@@ -10,12 +10,12 @@ const MangaInputs = () => {
     
 
 const { mangaUrl, setMangaUrl } = useContext(MangaUrlContext);
-const { option, setOption } = useContext(ChosenOptionContext);
+const { chosenMangaOption, setChosenMangaOption } = useContext(ChosenMangaOptionContext);
 
 
     const mangaInputsButton = (topMangaOption) => {
         setMangaUrl(topMangaOption);
-        setOption(topMangaOption);
+        setChosenMangaOption(topMangaOption);
       }
     
     return (
