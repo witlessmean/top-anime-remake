@@ -24,25 +24,28 @@ return (
  
         <div>
             <StyledNavLink to="/manga" style={{marginLeft: '10%'}} ><CustomMainButton variant="contained" color="primary"  onClick={() => {
-              if(mangaOpen === false || aniOpen === true){
                 
-                setAniOpen(false)
-                setMangaOpen(true)
-                setNavState(<MangaInputs/>)
-               
-                //setChosenAniOption('')
-            } else if(aniOpen === false && mangaOpen === true){
-                setChosenMangaOption(<ChosenMangaOptionC/>)
-            } 
-            
-            
-            
-            
-            else {
-                setNavState([])
                 
-                setMangaOpen(false)
-            }
+                if((aniOpen === undefined && mangaOpen === undefined) || (mangaOpen === undefined && aniOpen === false) ){
+                    setMangaOpen(true)
+                    setNavState(<MangaInputs/>)
+                   
+                } else if(mangaOpen === true && aniOpen === undefined){
+                            setMangaOpen(false)
+                            setNavState([])
+                }else if(aniOpen === true || aniOpen === undefined ){
+                       setAniOpen(false)
+                       setMangaOpen(true) 
+                       setNavState(<MangaInputs/>)
+                }else if(aniOpen === false && mangaOpen === false){
+                        setMangaOpen(true)
+                        setAniOpen(false)
+                        setNavState(<MangaInputs/>)
+                }else{
+                    setNavState([])
+                    setMangaOpen(undefined)                                             
+                    setAniOpen(false)
+                }
 
             }}>Manga</CustomMainButton></StyledNavLink>
 

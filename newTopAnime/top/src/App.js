@@ -31,8 +31,8 @@ const App = () => {
   const [animeData, setAnimeData] = useState([]);
   const [chosenAniOption, setChosenAniOption] = useState('Airing');
   const [chosenMangaOption, setChosenMangaOption] = useState('Manga');
-  const [aniOpen, setAniOpen] = useState(false);
-  const [mangaOpen, setMangaOpen] = useState(false);
+  const [aniOpen, setAniOpen] = useState(undefined);
+  const [mangaOpen, setMangaOpen] = useState(undefined);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const App = () => {
       console.log('cleanup')
     }
   }, [animeUrl, mangaUrl])
-  
+  console.log(aniOpen, mangaOpen)
   return (
       <>
       <GlobalStyle />

@@ -193,3 +193,5 @@ export const CustomMainButton = withStyles({
   //FAQ page
 
   //fix all the imports to be in order/more readable
+
+  //useMemo

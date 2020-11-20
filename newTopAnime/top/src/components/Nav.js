@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import Logo from '../Logo';
 import ChosenMangaOptionC from './mangaComponents/ChosenMangaOptionC';
 import ChosenAniOptionC from './animeComponents/ChosenAniOptionC';
+import { withRouter } from "react-router";
 
 
 const StyledNavBar = styled.div`
@@ -31,20 +32,35 @@ display: flex;
 justify-content: center;
 align-items: center;`
 
-const Nav = () => {
+const Nav = ({history, match, location}) => {
     
 const { navState } = useContext(NavStateContext);
 const { aniOpen } = useContext(AniOpenContext);
 const { mangaOpen } = useContext(MangaOpenContext);
 
 const displayOption = (aniOpen, mangaOpen) => {
-  if((aniOpen === true ) || (aniOpen === false && mangaOpen === false)){
- return <ChosenAniOptionC/> }else {
-   return <ChosenMangaOptionC />                                     //if ani = false and manga = false and last button clicked was manga return chosenmangaoption else return chosenanioption
+  if(location.pathname === '/manga'){
+    return <ChosenMangaOptionC/>
+  }
+  
+ else if (aniOpen === undefined && mangaOpen === undefined){
+ return <ChosenAniOptionC/> }
+ else if((mangaOpen === true) && (aniOpen === false)){
+   return <ChosenMangaOptionC />                                     
+ }else if((mangaOpen === false) && (aniOpen === true)){
+    return <ChosenAniOptionC/>
+ } else if((mangaOpen === undefined) && (aniOpen === false)){                                                      //manga === undefined, ani === false return manga. 
+   return <ChosenMangaOptionC/>
+ } else if((aniOpen === false && mangaOpen === undefined)){
+   return <ChosenAniOptionC/>
+ }else if(aniOpen === undefined && mangaOpen === true ){
+          return <ChosenMangaOptionC />
+ }else {
+   return <ChosenAniOptionC/>
  }
 }
     
-console.log(aniOpen, mangaOpen)
+//console.log(location.pathname)
 
     return (
        <>
@@ -63,7 +79,7 @@ console.log(aniOpen, mangaOpen)
         
 }
 
-export default Nav
+export default withRouter(Nav)
 
 
 

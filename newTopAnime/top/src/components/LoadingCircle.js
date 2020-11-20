@@ -12,7 +12,7 @@ align-items: center;
 const LoadingCircle = () => {
     return (
         <StyledCircle>
-            <CircularProgress/>
+             <CircularProgress>Loading</CircularProgress>
         </StyledCircle>
     )
 }

@@ -13,22 +13,32 @@ const AnimeButton = () => {
 const { navState, setNavState } = useContext(NavStateContext);
 const { aniOpen, setAniOpen } = useContext(AniOpenContext);
 const { mangaOpen, setMangaOpen } = useContext(MangaOpenContext);
-const { chosenAniOption, setChosenAniOption } = useContext(ChosenAniOptionContext);
-const { chosenMangaOption, setChosenMangaOption } = useContext(ChosenMangaOptionContext);
-//console.log(lastMangaOption.current)
+
 return (
         
         <div>
             <StyledNavLink to="/" ><CustomMainButton type="button" variant="contained" color="primary" onClick={(e) => {
-                if(aniOpen === false || mangaOpen === true){
-                    setMangaOpen(false)
+               
+               
+               if((aniOpen === undefined && mangaOpen === undefined) || (aniOpen === undefined && mangaOpen === false) ){
                     setAniOpen(true)
                     setNavState(<AnimeInputs/>)
-                    //setChosenMangaOption('')
-
-                } else {
+                   
+                }else if(aniOpen === true && mangaOpen === undefined){
+                    setAniOpen(undefined)
                     setNavState([])
-                    setAniOpen(false)
+                } else if(mangaOpen === true || mangaOpen === undefined ){
+                       setMangaOpen(false)
+                       setAniOpen(true) 
+                       setNavState(<AnimeInputs/>)
+                }else if(aniOpen === false && mangaOpen === false){
+                    setAniOpen(true)
+                    setMangaOpen(false)
+                    setNavState(<AnimeInputs/>)
+                }else {
+                    setNavState([])
+                    setAniOpen(undefined)
+                    setMangaOpen(false)
                 }
 
                 
