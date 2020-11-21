@@ -45,30 +45,31 @@ height: 300px;
 display: flex;
 overflow: hidden;
 
-div { 
-  text-align: center;
+
+ /////below div styling may seem redundant, but if i don't have it and the picture isn't large enough, the picture itself won't be centered which looks weird. 
+ div { 
   display: flex;
   justify-content: center;
   align-items: center;  
   
-}
+} 
 
   div a {
     text-decoration: none;
     color: black;
-    &:hover {
-      visibility: visible;
-    }
   }
-
 `
-
-
-
 export const StyledInfoContainer = styled.div`
 display: flex;
+justify-content: center;
+align-items: center;  
 flex-direction: column;
 flex-grow: 1;
+text-align: center;
+background-color: yellow;
+ & div:first-child {
+background-color: white;
+}
 `
 /////////////Inputs/////////////
 
@@ -195,3 +196,9 @@ export const CustomMainButton = withStyles({
   //fix all the imports to be in order/more readable
 
   //useMemo
+
+  //when finished, find a better and brighter color scheme
+
+  //optimize css for faster load
+
+  //node_modules\.bin\cypress open

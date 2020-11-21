@@ -17,7 +17,7 @@ justify-content: center;
 align-items: center;
 flex-direction: column;
 height: 13vh;
-background-color: #273043; 
+background-color: #273043;               
 -webkit-box-shadow: 0 10px 5px #888888;
 -moz-box-shadow: 0 10px 5px #888888;
 box-shadow: 0 10px 5px #888888;
@@ -39,29 +39,25 @@ const { aniOpen } = useContext(AniOpenContext);
 const { mangaOpen } = useContext(MangaOpenContext);
 
 const displayOption = (aniOpen, mangaOpen) => {
+  
   if(location.pathname === '/manga'){
     return <ChosenMangaOptionC/>
-  }
-  
- else if (aniOpen === undefined && mangaOpen === undefined){
+  }else if ((aniOpen === undefined) && (mangaOpen === undefined)){
  return <ChosenAniOptionC/> }
  else if((mangaOpen === true) && (aniOpen === false)){
    return <ChosenMangaOptionC />                                     
  }else if((mangaOpen === false) && (aniOpen === true)){
     return <ChosenAniOptionC/>
- } else if((mangaOpen === undefined) && (aniOpen === false)){                                                      //manga === undefined, ani === false return manga. 
-   return <ChosenMangaOptionC/>
+ } else if((mangaOpen === undefined) && (aniOpen === false)){                                                     
  } else if((aniOpen === false && mangaOpen === undefined)){
    return <ChosenAniOptionC/>
- }else if(aniOpen === undefined && mangaOpen === true ){
+ }else if((aniOpen === undefined) && (mangaOpen === true)){
           return <ChosenMangaOptionC />
  }else {
    return <ChosenAniOptionC/>
  }
 }
     
-//console.log(location.pathname)
-
     return (
        <>
        <Logo/>
@@ -75,12 +71,9 @@ const displayOption = (aniOpen, mangaOpen) => {
            {displayOption(aniOpen, mangaOpen)}
                             </>
                             )
-            
-        
-}
+            }
 
 export default withRouter(Nav)
 
 
 
-//{ (aniOpen === true) || (aniOpen && mangaOpen) === false ? <ChosenAniOptionC /> : <ChosenMangaOptionC /> }

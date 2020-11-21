@@ -1,11 +1,9 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 import {NavStateContext} from '../../contexts/NavStateContext';
 import AnimeInputs from './AnimeInputs'
 import { StyledNavLink } from '../../reusableStyles';
 import { AniOpenContext } from '../../contexts/AniOpenContext';
 import { MangaOpenContext } from '../../contexts/MangaOpenContext';
-import { ChosenAniOptionContext } from '../../contexts/ChosenAniOptionContext'
-import { ChosenMangaOptionContext } from '../../contexts/ChosenMangaOptionContext'
 import { CustomMainButton } from '../../reusableStyles';
 
 const AnimeButton = () => {
