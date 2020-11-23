@@ -46,51 +46,72 @@ display: flex;
 overflow: hidden;
 
 
- /////below div styling may seem redundant, but if i don't have it and the picture isn't large enough, the picture itself won't be centered which looks weird. 
- div { 
+ ////selects the img div within the styled container
+ div:nth-child(1) { 
   display: flex;
   justify-content: center;
   align-items: center;  
-  
-} 
-
-  div a {
-    text-decoration: none;
-    color: black;
-  }
-`
+  } 
+////selects the info div within the styled container
+  div:nth-child(2) { 
+  display: flex;
+  } 
+  `
 export const StyledInfoContainer = styled.div`
 display: flex;
-justify-content: center;
-align-items: center;  
 flex-direction: column;
 flex-grow: 1;
+font-family: 'Roboto', sans-serif;
+////represents every section of the info container
+div:nth-child(1) {
+justify-content: flex-start;
+font-size: 2rem;
+font-style: italic;
+margin-left: 0.4vw;
+}
+div:nth-child(2) {
+margin-top: 1.3vh;
+font-size: 1.7rem;
+justify-content: center;
+}
+div:nth-child(3) {
+margin-top: 1.3vh; 
+font-size: 2.4rem;
 text-align: center;
-background-color: yellow;
- & div:first-child {
-background-color: white;
+a {
+  text-decoration: none;
+  color: white;
+  }
+}
+div:nth-child(4) {
+margin-top: 1vh;
+margin-left: 0.4vw;
+}
+div:nth-child(5) {
+margin-top: 0.4vh;
+margin-left: 0.4vw;
+}
+div:nth-child(6) {
+justify-content: flex-start;
+margin-top: 0.4vh;
+margin-left: 0.4vw;
 }
 `
 /////////////Inputs/////////////
-
 export const StyledInputs = styled.div`
 display: flex;
 justify-content: center;
-
 ul li{
-    
-list-style: none;
-display: inline;
-text-align: center;
-margin: 2px;
+    list-style: none;
+    display: inline;
+    text-align: center;
+    margin: 2px;
 }
 `
 export const StyledNavLink = styled(NavLink)`
 text-decoration: none;
 `
-
 //////////////ChosenOption styles////////////////
-
 export const StyledOptionDiv = styled.div`
 margin: 5vh 2vw 5vh 2vw;
 display: flex;
@@ -99,9 +120,7 @@ align-content: center;
 font-family: 'Goldman', cursive;
 font-size: 4rem;
 `
-
-//////////////////tooltip styles////////////////
-
+////tooltip styles
 export const CustomTooltip = withStyles((theme) => ({
   tooltip: {
     backgroundColor: theme.palette.common.white,
@@ -111,8 +130,7 @@ export const CustomTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-//////////////customizing material UI buttons////////////////////////
-
+////customizing material UI buttons
 export const CustomMainButton = withStyles({
   root: {
     width: '5vw',
@@ -202,3 +220,10 @@ export const CustomMainButton = withStyles({
   //optimize css for faster load
 
   //node_modules\.bin\cypress open
+
+  //react smooth scroll check out
+
+//write in nav or something directions with the hand icon to let users know that we can click on anime buttons and also the anime titles to go to myanimelist link. 
+
+
+  
