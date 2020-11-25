@@ -18,6 +18,16 @@ html {
     font-family: 'Nunito', sans-serif;
     font-size: 1.6rem;
     margin: 0;
+    hr {
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+    }
   }
   `
 
@@ -38,15 +48,14 @@ export const StyledContainer = styled.div`
 -moz-box-shadow: 0 10px 5px #888888;
 box-shadow: 0 10px 5px #888888;
 border-radius: 8px;
+border: 1.7px solid rgba(0,0,0, 0.5);
 margin: 10px;
-background-color: rgba(27, 23, 23, 0.1);
+background-color:rgba(27, 23, 23, 0.1);
 width: 400px;
 height: 300px;
 display: flex;
-overflow: hidden;
-
-
- ////selects the img div within the styled container
+overflow: hidden; 
+////selects the img div within the styled container
  div:nth-child(1) { 
   display: flex;
   justify-content: center;
@@ -60,41 +69,35 @@ overflow: hidden;
 export const StyledInfoContainer = styled.div`
 display: flex;
 flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
 flex-grow: 1;
 font-family: 'Roboto', sans-serif;
 ////represents every section of the info container
 div:nth-child(1) {
-justify-content: flex-start;
-font-size: 2rem;
-font-style: italic;
-margin-left: 0.4vw;
+font-size: 1.7rem;
 }
 div:nth-child(2) {
-margin-top: 1.3vh;
+margin-top: 0.5vh;
 font-size: 1.7rem;
-justify-content: center;
 }
 div:nth-child(3) {
-margin-top: 1.3vh; 
+margin-top: 0.5vh; 
 font-size: 2.4rem;
-text-align: center;
 a {
   text-decoration: none;
-  color: white;
+  color: black;
   }
 }
 div:nth-child(4) {
-margin-top: 1vh;
-margin-left: 0.4vw;
+margin-top: 0.5vh;
 }
 div:nth-child(5) {
-margin-top: 0.4vh;
-margin-left: 0.4vw;
+margin-top: 0.5vh;
 }
 div:nth-child(6) {
-justify-content: flex-start;
-margin-top: 0.4vh;
-margin-left: 0.4vw;
+margin-top: 0.5vh;
 }
 `
 /////////////Inputs/////////////
@@ -226,4 +229,4 @@ export const CustomMainButton = withStyles({
 //write in nav or something directions with the hand icon to let users know that we can click on anime buttons and also the anime titles to go to myanimelist link. 
 
 
-  
+//use the same opaque styling as ani chart, have an arrow that points down in case we want to see the whole picture. it will have a z index and be 100% width and height with a 0.5 opaque background

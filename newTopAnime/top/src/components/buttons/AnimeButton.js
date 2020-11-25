@@ -6,6 +6,7 @@ import { AniOpenContext } from '../../contexts/AniOpenContext';
 import { MangaOpenContext } from '../../contexts/MangaOpenContext';
 import { CustomMainButton } from '../../reusableStyles';
 
+
 const AnimeButton = () => {
     
 const { navState, setNavState } = useContext(NavStateContext);

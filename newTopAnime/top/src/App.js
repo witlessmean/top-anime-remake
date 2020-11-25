@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
 import { GlobalStyle } from './reusableStyles'
 import Nav from "./components/Nav"
@@ -18,8 +18,7 @@ import { ChosenMangaOptionContext } from './contexts/ChosenMangaOptionContext';
 import { AniOpenContext } from './contexts/AniOpenContext';
 import { MangaOpenContext } from './contexts/MangaOpenContext';
 import LoadingCircle from './components/LoadingCircle';
-
-
+import {useSpring, animated} from 'react-spring';
 
 const App = () => {
   const [navState, setNavState] = useState([]);
@@ -34,6 +33,8 @@ const App = () => {
   const [aniOpen, setAniOpen] = useState(undefined);
   const [mangaOpen, setMangaOpen] = useState(undefined);
   const [loading, setLoading] = useState(true);
+
+  const springProps = useSpring({opacity: 1, from: {opacity: 0}})
 
   useEffect(() => {
     const animePromise = apiData.get(`/anime/1/${animeUrl}`);
@@ -55,7 +56,10 @@ const App = () => {
       console.log('cleanup')
     }
   }, [animeUrl, mangaUrl])
-  console.log(aniOpen, mangaOpen)
+  //console.log(aniOpen, mangaOpen)
+  
+const AnimatedAnimePage = animated(AnimePage);
+
   return (
       <>
       <GlobalStyle />
@@ -73,7 +77,7 @@ const App = () => {
         <MangaDataContext.Provider value={{ mangaData, setMangaData }}>
         <Nav style={{margin: 100}} />
         <Switch>
-        <Route exact path="/"> { loading === true ? <LoadingCircle>Loading....</LoadingCircle> : <AnimePage/>} </Route>
+        <Route exact path="/"> { loading === true ? <LoadingCircle>Loading....</LoadingCircle> : <AnimatedAnimePage/>} </Route>
         <Route path="/manga"> { loading === true ? <LoadingCircle>Loading....</LoadingCircle> : <MangaPage/>} </Route>
         </Switch>
       </MangaDataContext.Provider>
