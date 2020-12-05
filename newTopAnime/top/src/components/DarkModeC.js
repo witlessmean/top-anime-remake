@@ -20,9 +20,9 @@ const DarkModeC = () => {
 
     const onCheckboxChange = (e) => {
         setMode(e.target.checked)
-        
-    }
-console.log(mode)
+        }
+        console.log(mode);
+
     return (
             <DarkModeContainer>
                 <SunIcon />

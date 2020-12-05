@@ -20,6 +20,7 @@ import { ModeContext } from './contexts/ModeContext';
 import LoadingCircle from './components/LoadingCircle';
 import {useSpring, animated} from 'react-spring';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import storage from 'local-storage-fallback';
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -41,7 +42,7 @@ html {
     } 
       };
    a { color: ${ (props) => {
-            return props.theme.mode === true ? 'white !important' : 'black'
+            return props.theme.mode === true ? '#f5faf6 !important' : 'black'
     } 
       } };
 
@@ -50,7 +51,10 @@ html {
     margin: 0;
   }
   `
-
+const getInitialTheme  = () => {
+  const savedTheme = storage.getItem('theme');
+    return savedTheme ? JSON.parse(savedTheme) : false 
+}
 
 const App = () => {
   const [navState, setNavState] = useState([]);
@@ -65,7 +69,7 @@ const App = () => {
   const [aniOpen, setAniOpen] = useState(undefined);
   const [mangaOpen, setMangaOpen] = useState(undefined);
   const [loading, setLoading] = useState(true);
-  const [mode, setMode] = useState(false);
+  const [mode, setMode] = useState(getInitialTheme);
   
   useEffect(() => {
     const animePromise = apiData.get(`/anime/1/${animeUrl}`);
@@ -87,7 +91,13 @@ const App = () => {
       abortController.abort();
     }
   }, [animeUrl, mangaUrl])
-  //console.log(aniOpen, mangaOpen)
+
+useEffect(() => {
+    storage.setItem('theme', JSON.stringify(mode))
+  return () => {
+    
+  }
+}, [mode])
   
 const AnimatedAnimePage = animated(AnimePage);
 //const springProps = useSpring({opacity: 1, from: {opacity: 0}})
