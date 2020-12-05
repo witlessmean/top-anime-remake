@@ -5,9 +5,11 @@ import { MangaOpenContext } from '../contexts/MangaOpenContext'
 import AnimeButton from './buttons/AnimeButton';
 import MangaButton from './buttons/MangaButton';
 import styled from 'styled-components';
-import Logo from '../Logo';
+import Logo from './Logo';
 import ChosenMangaOptionC from './mangaComponents/ChosenMangaOptionC';
 import ChosenAniOptionC from './animeComponents/ChosenAniOptionC';
+import DarkModeC from './DarkModeC';
+
 import { withRouter } from "react-router";
 
 
@@ -18,9 +20,9 @@ align-items: center;
 flex-direction: column;
 height: 13vh;
 background-color: #273043;               
--webkit-box-shadow: 0 10px 5px #888888;
--moz-box-shadow: 0 10px 5px #888888;
-box-shadow: 0 10px 5px #888888;
+-webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 1);
+-moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 1);
+box-shadow: 0 2px 10px rgba(0, 0, 0, 1);
 `
 const StyledInputsDiv = styled.div`
 display: flex;
@@ -31,6 +33,7 @@ const StyledButtonDiv = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;`
+
 
 const Nav = ({history, match, location}) => {
     
@@ -61,12 +64,12 @@ const displayOption = (aniOpen, mangaOpen) => {
     return (
        <>
        <Logo/>
-       
+       <DarkModeC />   
        <StyledNavBar>
             <StyledButtonDiv> <AnimeButton />
              <MangaButton /> 
              </StyledButtonDiv>
-             <StyledInputsDiv>{navState}</StyledInputsDiv>
+             <StyledInputsDiv>{navState}</StyledInputsDiv>        
             </StyledNavBar>
            {displayOption(aniOpen, mangaOpen)}
                             </>

@@ -1,35 +1,12 @@
 import styled from 'styled-components';
-import { createGlobalStyle } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-
-export const GlobalStyle = createGlobalStyle`
-html {
-  font-size: 62.5%;  
-  box-sizing: border-box;
-  }
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-  body { 
-    background-color: #eae7dc; 
-    font-family: 'Nunito', sans-serif;
-    font-size: 1.6rem;
-    margin: 0;
-    hr {
-  border: 0;
-  height: 2px;
-  background-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.75),
-    rgba(0, 0, 0, 0)
-  );
-    }
-  }
-  `
+import MoodIcon from '@material-ui/icons/Mood';
+import MoodBadIcon from '@material-ui/icons/MoodBad';
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
+import Brightness3Icon from '@material-ui/icons/Brightness3';
 
   ////wrapper for the map////
   
@@ -44,12 +21,13 @@ html {
 ///////container////////
 
 export const StyledContainer = styled.div`
--webkit-box-shadow: 0 10px 5px #888888;
--moz-box-shadow: 0 10px 5px #888888;
-box-shadow: 0 10px 5px #888888;
+-webkit-box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+-moz-box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+//box-shadow: 0 10px 5px #888888;
 border-radius: 8px;
 border: 1.7px solid rgba(0,0,0, 0.5);
-margin: 10px;
+margin: 15px 10px;
 background-color:rgba(27, 23, 23, 0.1);
 width: 400px;
 height: 300px;
@@ -151,8 +129,44 @@ export const CustomMainButton = withStyles({
   },
 })(Button);
 
+export const OpenInputButton = withStyles({
+  root: {
+    variant: 'contained',
+    color: 'primary',
+    type: "button",
+    size: 'large'
+  }
+})(Button);
 
+////material-ui icons
+export const GoodMoodIcon = withStyles({
+  root: {
+    fontSize: 'large',
+    color: '#33b849',
+  }
+})(MoodIcon);
 
+export const BadMoodIcon = withStyles({
+  root: {
+    fontSize: 'large',
+    color: '#de3333',
+  }
+})(MoodBadIcon);
+
+export const SunIcon = withStyles({
+  root: {
+    fontSize: '4rem',
+    marginRight: '0.2em',
+    color: '#f7f7f7'
+  }
+})(WbSunnyIcon);
+
+export const MoonIcon = withStyles({
+  root: {
+    fontSize: '4rem',
+    color: '#f7f7f7'
+  }
+})(Brightness3Icon);
 
 
   //we will build out the container. i want the images as large as they can be. what we will do to compensate for this, is build out the container that they're all in to be the same size, and we will hide overflow. 
@@ -230,3 +244,9 @@ export const CustomMainButton = withStyles({
 
 
 //use the same opaque styling as ani chart, have an arrow that points down in case we want to see the whole picture. it will have a z index and be 100% width and height with a 0.5 opaque background
+
+//fix animations. animations happen before loading happens. think i need to use some async. 
+
+//change the MoodIcons and use withStyles in order to make it so we don't need to write the styles inline. Abstract as many of the inline styles as possible. 
+
+//we will use withStyles for all of the inputs as well. 

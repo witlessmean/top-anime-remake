@@ -1,7 +1,6 @@
 import React from "react";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
-import { GlobalStyle } from './reusableStyles'
 import Nav from "./components/Nav"
 import apiData from "./utils/api";
 import AnimePage from './components/animeComponents/AnimePage';
@@ -17,8 +16,41 @@ import { ChosenAniOptionContext } from './contexts/ChosenAniOptionContext';
 import { ChosenMangaOptionContext } from './contexts/ChosenMangaOptionContext';
 import { AniOpenContext } from './contexts/AniOpenContext';
 import { MangaOpenContext } from './contexts/MangaOpenContext';
+import { ModeContext } from './contexts/ModeContext';
 import LoadingCircle from './components/LoadingCircle';
 import {useSpring, animated} from 'react-spring';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+html {
+  font-size: 62.5%;  
+  box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+ 
+ body { 
+    
+    background-color: ${ (props) => {
+            return props.theme.mode === true ? '#181818' : '#eae7dc'
+    } 
+      };
+    color: ${ (props) => {
+            return props.theme.mode === true ? 'white' : 'black'
+    } 
+      };
+   a { color: ${ (props) => {
+            return props.theme.mode === true ? 'white !important' : 'black'
+    } 
+      } };
+
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.6rem;
+    margin: 0;
+  }
+  `
+
 
 const App = () => {
   const [navState, setNavState] = useState([]);
@@ -33,15 +65,14 @@ const App = () => {
   const [aniOpen, setAniOpen] = useState(undefined);
   const [mangaOpen, setMangaOpen] = useState(undefined);
   const [loading, setLoading] = useState(true);
-
-  const springProps = useSpring({opacity: 1, from: {opacity: 0}})
-
+  const [mode, setMode] = useState(false);
+  
   useEffect(() => {
     const animePromise = apiData.get(`/anime/1/${animeUrl}`);
     const mangaPromise = apiData.get(`/manga/1/${mangaUrl}`);
-
+    const abortController = new AbortController();
       Promise.all([animePromise, mangaPromise]).then((promiseContent) => {
-      
+          
           setAnimeData(promiseContent[0].data.top);
           setMangaData(promiseContent[1].data.top);
           setCurrentAnimePics(promiseContent[0].data.top);
@@ -53,19 +84,21 @@ const App = () => {
       })
 
     return () => {
-      console.log('cleanup')
+      abortController.abort();
     }
   }, [animeUrl, mangaUrl])
   //console.log(aniOpen, mangaOpen)
   
 const AnimatedAnimePage = animated(AnimePage);
-
+//const springProps = useSpring({opacity: 1, from: {opacity: 0}})
   return (
+      <ThemeProvider theme={{mode}}>
       <>
-      <GlobalStyle />
       <Router>
-    <CurrentAnimePicsContext.Provider value={{ currentAnimePics,setCurrentAnimePics }}>
-        <CurrentMangaPicsContext.Provider value={{currentMangaPics, setCurrentMangaPics}}>
+      <ModeContext.Provider value={{ mode, setMode }}>
+      <GlobalStyle />
+     <CurrentAnimePicsContext.Provider value={{ currentAnimePics,setCurrentAnimePics }}>
+    <CurrentMangaPicsContext.Provider value={{currentMangaPics, setCurrentMangaPics}}>
       <AniOpenContext.Provider value={{aniOpen, setAniOpen}} >
       <MangaOpenContext.Provider value={{mangaOpen, setMangaOpen}}>
       <ChosenAniOptionContext.Provider value={{chosenAniOption, setChosenAniOption}}>  
@@ -91,8 +124,10 @@ const AnimatedAnimePage = animated(AnimePage);
       </AniOpenContext.Provider>
       </CurrentMangaPicsContext.Provider>
       </CurrentAnimePicsContext.Provider>
+      </ModeContext.Provider>
     </Router>
     </>
+    </ThemeProvider>
   );
 };
 
