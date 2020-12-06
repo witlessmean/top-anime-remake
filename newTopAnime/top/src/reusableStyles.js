@@ -9,17 +9,12 @@ import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 
   ////wrapper for the map////
-  
   export const Wrapper = styled.section`
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;`
-      
-
-
-///////container////////
-
+  //////container////////
 export const StyledContainer = styled.div`
 -webkit-box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
 -moz-box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);

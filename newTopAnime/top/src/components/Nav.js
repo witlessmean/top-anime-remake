@@ -9,7 +9,6 @@ import Logo from './Logo';
 import ChosenMangaOptionC from './mangaComponents/ChosenMangaOptionC';
 import ChosenAniOptionC from './animeComponents/ChosenAniOptionC';
 import DarkModeC from './DarkModeC';
-
 import { withRouter } from "react-router";
 
 

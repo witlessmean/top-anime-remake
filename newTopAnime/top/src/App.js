@@ -32,7 +32,29 @@ html {
   }
  
  body { 
-    
+  ::-webkit-scrollbar {
+    width: 1vw;
+}
+
+::-webkit-scrollbar-track {
+  background: #eae7dc; 
+  border: 1px solid #aeaeb5
+}
+::-webkit-scrollbar-thumb {
+  background: #eae7dc;
+  border-radius: 10px;
+  border: 1px solid #aeaeb5
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #aeaeb5
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
     background-color: ${ (props) => {
             return props.theme.mode === true ? '#181818' : '#eae7dc'
     } 
@@ -44,8 +66,8 @@ html {
    a { color: ${ (props) => {
             return props.theme.mode === true ? '#f5faf6 !important' : 'black'
     } 
-      } };
-
+      } 
+        };
     font-family: 'Nunito', sans-serif;
     font-size: 1.6rem;
     margin: 0;
