@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from './utils/mediaBreakPoints';
 import { NavLink } from 'react-router-dom';
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
@@ -8,8 +9,10 @@ import MoodBadIcon from '@material-ui/icons/MoodBad';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 
-  ////wrapper for the map////
-  export const Wrapper = styled.section`
+
+
+////wrapper for the map////
+export const Wrapper = styled.section`
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -38,6 +41,11 @@ overflow: hidden;
   div:nth-child(2) { 
   display: flex;
   } 
+  
+  @media ${device.mobileS} {
+      background-color: red !important;
+    }
+
   `
 export const StyledInfoContainer = styled.div`
 display: flex;
@@ -245,3 +253,7 @@ export const MoonIcon = withStyles({
 //change the MoodIcons and use withStyles in order to make it so we don't need to write the styles inline. Abstract as many of the inline styles as possible. 
 
 //we will use withStyles for all of the inputs as well. 
+
+//improve load performance https://www.youtube.com/watch?v=5fLW5Q5ODiE
+
+//mobilesmall will add absolutely positioned arrows that when clicked 
