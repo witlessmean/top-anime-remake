@@ -44,6 +44,9 @@ overflow: hidden;
   
   @media ${device.mobileS} {
       background-color: red !important;
+      width: 230px;
+      height: 300px;
+      
     }
 
   `
@@ -256,4 +259,4 @@ export const MoonIcon = withStyles({
 
 //improve load performance https://www.youtube.com/watch?v=5fLW5Q5ODiE
 
-//mobilesmall will add absolutely positioned arrows that when clicked 
+//mobilesmall will add absolutely positioned arrows that when clicked. use visibility hidden with selectors on all the shit. may need to change selector pattern. 
