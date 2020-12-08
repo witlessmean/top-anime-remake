@@ -8,7 +8,8 @@ import MoodIcon from '@material-ui/icons/Mood';
 import MoodBadIcon from '@material-ui/icons/MoodBad';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import Brightness3Icon from '@material-ui/icons/Brightness3';
-
+import Brightness4Icon from '@material-ui/icons/Brightness4';
+import Brightness7Icon from '@material-ui/icons/Brightness7';
 
 
 ////wrapper for the map////
@@ -18,7 +19,7 @@ export const Wrapper = styled.section`
   align-items: center;
   flex-wrap: wrap;`
   //////container////////
-export const StyledContainer = styled.div`
+export const StyledContainer = styled.div` 
 -webkit-box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
 -moz-box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
 box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
@@ -36,18 +37,16 @@ overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;  
+  @media ${device.mobileS} {
+      width: 230px;
+      height: 300px;
+      } 
   } 
 ////selects the info div within the styled container
   div:nth-child(2) { 
   display: flex;
   } 
   
-  @media ${device.mobileS} {
-      background-color: red !important;
-      width: 230px;
-      height: 300px;
-      
-    }
 
   `
 export const StyledInfoContainer = styled.div`
@@ -120,6 +119,7 @@ export const CustomTooltip = withStyles((theme) => ({
 ////customizing material UI buttons
 export const CustomMainButton = withStyles({
   root: {
+    visibility: 'hidden',
     width: '5vw',
     height: '2.5em',
     fontWeight: 'bolder',
@@ -160,6 +160,7 @@ export const BadMoodIcon = withStyles({
 })(MoodBadIcon);
 
 export const SunIcon = withStyles({
+  
   root: {
     fontSize: '4rem',
     marginRight: '0.2em',
@@ -173,6 +174,20 @@ export const MoonIcon = withStyles({
     color: '#f7f7f7'
   }
 })(Brightness3Icon);
+
+export const MobileSunIcon = withStyles({
+  root: {
+    fontSize: '3rem',
+    color: '#f7f7f7'
+  }
+})(Brightness7Icon);
+
+export const MobileMoonIcon = withStyles({
+  root: {
+    fontSize: '3rem',
+    color: '#f7f7f7'
+  }
+})(Brightness4Icon);
 
 
   //we will build out the container. i want the images as large as they can be. what we will do to compensate for this, is build out the container that they're all in to be the same size, and we will hide overflow. 
@@ -260,3 +275,5 @@ export const MoonIcon = withStyles({
 //improve load performance https://www.youtube.com/watch?v=5fLW5Q5ODiE
 
 //mobilesmall will add absolutely positioned arrows that when clicked. use visibility hidden with selectors on all the shit. may need to change selector pattern. 
+
+//maybe use console.trace to figure out animations?

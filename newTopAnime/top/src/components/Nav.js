@@ -10,6 +10,7 @@ import ChosenMangaOptionC from './mangaComponents/ChosenMangaOptionC';
 import ChosenAniOptionC from './animeComponents/ChosenAniOptionC';
 import DarkModeC from './DarkModeC';
 import { withRouter } from "react-router";
+import { device } from '../utils/mediaBreakPoints';
 
 
 const StyledNavBar = styled.div`

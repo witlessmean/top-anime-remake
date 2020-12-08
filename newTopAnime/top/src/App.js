@@ -119,7 +119,8 @@ useEffect(() => {
   return () => {
     
   }
-}, [mode])
+}, [mode]);
+
   
 const AnimatedAnimePage = animated(AnimePage);
 //const springProps = useSpring({opacity: 1, from: {opacity: 0}})
@@ -127,9 +128,9 @@ const AnimatedAnimePage = animated(AnimePage);
       <ThemeProvider theme={{mode}}>
       <>
       <Router>
-      <ModeContext.Provider value={{ mode, setMode }}>
+      <ModeContext.Provider value={{mode, setMode}}>
       <GlobalStyle />
-     <CurrentAnimePicsContext.Provider value={{ currentAnimePics,setCurrentAnimePics }}>
+     <CurrentAnimePicsContext.Provider value={{currentAnimePics,setCurrentAnimePics}}>
     <CurrentMangaPicsContext.Provider value={{currentMangaPics, setCurrentMangaPics}}>
       <AniOpenContext.Provider value={{aniOpen, setAniOpen}} >
       <MangaOpenContext.Provider value={{mangaOpen, setMangaOpen}}>
