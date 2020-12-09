@@ -141,6 +141,23 @@ export const OpenInputButton = withStyles({
   }
 })(Button);
 
+export const MobileMainButton = withStyles({
+  root: {
+    width: '5vw',
+    height: '2.5em',
+    fontWeight: 'bolder',
+    fontSize: 17,
+    '&:active': {
+      boxShadow: 'none',
+      backgroundColor: '#c4dbf5',
+      borderColor: '#005cbf',
+    },
+    '&:focus': {
+      boxShadow: '0 0 0 0.2rem rgba(0,120,255,.8)',
+    },
+  },
+})(Button);
+
 ////material-ui icons
 export const GoodMoodIcon = withStyles({
   root: {

@@ -2,19 +2,19 @@ import React, {useState, useContext} from 'react'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {MobileMainButton} from '../../reusableStyles';
-import {AnimeUrlContext} from '../../contexts/AnimeUrlContext' ;
-import {ChosenAniOptionContext} from '../../contexts/ChosenAniOptionContext';
+import {MangaUrlContext} from '../../contexts/MangaUrlContext' ;
+import {ChosenMangaOptionContext} from '../../contexts/ChosenMangaOptionContext';
 
 
-const MobileAnimeMenu = () => {
+const MobileMangaMenu = () => {
     
     const [menuAnchor, setMenuAnchor] = useState(null);
-    const { animeUrl, setAnimeUrl } = useContext(AnimeUrlContext);
-    const { chosenAniOption, setChosenAniOption } = useContext(ChosenAniOptionContext);
+    const { mangaUrl, setMangaUrl } = useContext(MangaUrlContext);
+    const { chosenMangaOption, setChosenMangaOption } = useContext(ChosenMangaOptionContext);
     
-    const animeInputsButton = (topOption) => {
-      setAnimeUrl(topOption)
-      setChosenAniOption(topOption)
+    const mangaInputsButton = (topOption) => {
+      setMangaUrl(topOption)
+      setChosenMangaOption(topOption)
       }
     
     const handleMenuClick = (e) => {
@@ -29,7 +29,7 @@ const MobileAnimeMenu = () => {
       
       <div>
             <MobileMainButton variant="contailed" color="primary" aria-controls="simple-menu" aria-haspopup="true" onClick={handleMenuClick}>
-              Anime
+              Manga
             </MobileMainButton>
             <Menu 
         anchorEl={menuAnchor}
@@ -39,28 +39,28 @@ const MobileAnimeMenu = () => {
       >
         <MenuItem onClick={() => { 
           handleMenuClose(); 
-          animeInputsButton('upcoming')}}>Upcoming</MenuItem>
+          mangaInputsButton('manga')}}>manga</MenuItem>
         <MenuItem onClick={() => { 
           handleMenuClose(); 
-          animeInputsButton('airing')}}>airing</MenuItem>
+          mangaInputsButton('novels')}}>novels</MenuItem>
         <MenuItem onClick={() => { 
           handleMenuClose(); 
-          animeInputsButton('tv')}}>tv</MenuItem>
+          mangaInputsButton('oneshots')}}>oneshots</MenuItem>
         <MenuItem onClick={() => { 
           handleMenuClose(); 
-          animeInputsButton('movie')}}>movie</MenuItem>
+          mangaInputsButton('doujin')}}>doujin</MenuItem>
         <MenuItem onClick={() => { 
           handleMenuClose(); 
-          animeInputsButton('ova')}}>ova</MenuItem>
+          mangaInputsButton('manhwa')}}>manhwa</MenuItem>
         <MenuItem onClick={() => { 
           handleMenuClose(); 
-          animeInputsButton('special')}}>special</MenuItem>
+          mangaInputsButton('manhua')}}>manhua</MenuItem>
         <MenuItem onClick={() => { 
           handleMenuClose(); 
-          animeInputsButton('bypopularity')}}>bypopularity</MenuItem>
+          mangaInputsButton('bypopularity')}}>bypopularity</MenuItem>
         <MenuItem onClick={() => { 
           handleMenuClose(); 
-          animeInputsButton('favorite')}}>favorite</MenuItem>
+          mangaInputsButton('favorite')}}>favorite</MenuItem>
 
     </Menu>
     </div>
@@ -68,4 +68,4 @@ const MobileAnimeMenu = () => {
       )
 }
 
-export default MobileAnimeMenu
+export default MobileMangaMenu

@@ -12,7 +12,9 @@ import DarkModeC from './DarkModeC';
 import { withRouter } from "react-router";
 import { device } from '../utils/mediaBreakPoints';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import MobileAnimeMenu from './buttons/MobileAnimeMenu'
+import MobileMangaMenu from './buttons/MobileMangaMenu';
+import MobileAnimeMenu from './buttons/MobileAnimeMenu';
+
 
 const StyledNavBar = styled.div`
 display: flex;
@@ -69,7 +71,8 @@ const displayOption = (aniOpen, mangaOpen) => {
        <DarkModeC />   
        <StyledNavBar>
             { matches ? <StyledButtonDiv>
-                <MobileAnimeMenu />
+                <MobileAnimeMenu /> 
+                <MobileMangaMenu />
                 </StyledButtonDiv> : 
                 <StyledButtonDiv> 
                 <AnimeButton />
