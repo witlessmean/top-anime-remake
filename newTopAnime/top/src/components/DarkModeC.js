@@ -56,7 +56,8 @@ const DarkModeC = () => {
 }, [matches, mode])
     return (
             <DarkModeContainer>
-               { mobileIcon }
+               {mobileIcon}
+    { matches === true ? '' : <SunIcon /> }  
                 <Switch onChange={onCheckboxChange} color="primary" inputProps={{ 'aria-label': 'secondary checkbox' }} checked={mode} />
     { matches === true ? '' : <MoonIcon /> }  
             </DarkModeContainer>
