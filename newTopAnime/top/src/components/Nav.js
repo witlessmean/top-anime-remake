@@ -11,7 +11,8 @@ import ChosenAniOptionC from './animeComponents/ChosenAniOptionC';
 import DarkModeC from './DarkModeC';
 import { withRouter } from "react-router";
 import { device } from '../utils/mediaBreakPoints';
-
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import MobileAnimeMenu from './buttons/MobileAnimeMenu'
 
 const StyledNavBar = styled.div`
 display: flex;
@@ -37,6 +38,7 @@ align-items: center;`
 
 const Nav = ({history, match, location}) => {
     
+const matches = useMediaQuery(device.mobileS); 
 const { navState } = useContext(NavStateContext);
 const { aniOpen } = useContext(AniOpenContext);
 const { mangaOpen } = useContext(MangaOpenContext);
@@ -66,9 +68,13 @@ const displayOption = (aniOpen, mangaOpen) => {
        <Logo/>
        <DarkModeC />   
        <StyledNavBar>
-            <StyledButtonDiv> <AnimeButton />
-             <MangaButton /> 
-             </StyledButtonDiv>
+            { matches ? <StyledButtonDiv>
+                <MobileAnimeMenu />
+                </StyledButtonDiv> : 
+                <StyledButtonDiv> 
+                <AnimeButton />
+                <MangaButton /> 
+             </StyledButtonDiv>}
              <StyledInputsDiv>{navState}</StyledInputsDiv>        
             </StyledNavBar>
            {displayOption(aniOpen, mangaOpen)}

@@ -45,9 +45,7 @@ overflow: hidden;
 ////selects the info div within the styled container
   div:nth-child(2) { 
   display: flex;
-  } 
-  
-
+  }
   `
 export const StyledInfoContainer = styled.div`
 display: flex;
@@ -119,7 +117,6 @@ export const CustomTooltip = withStyles((theme) => ({
 ////customizing material UI buttons
 export const CustomMainButton = withStyles({
   root: {
-    visibility: 'hidden',
     width: '5vw',
     height: '2.5em',
     fontWeight: 'bolder',

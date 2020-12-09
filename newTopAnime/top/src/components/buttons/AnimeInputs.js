@@ -1,10 +1,9 @@
 import React, {useContext}from 'react'
 import {AnimeUrlContext} from '../../contexts/AnimeUrlContext' ;
 import {ChosenAniOptionContext} from '../../contexts/ChosenAniOptionContext';
-import { StyledInputs } from '../../reusableStyles';
+import {StyledInputs} from '../../reusableStyles';
 import Button from '@material-ui/core/Button';
 import {useSpring, animated} from 'react-spring';
-
 
 const AnimeInputs = () => {
     
@@ -12,7 +11,7 @@ const AnimeInputs = () => {
     const { animeUrl, setAnimeUrl } = useContext(AnimeUrlContext);
     const { chosenAniOption, setChosenAniOption } = useContext(ChosenAniOptionContext);
    
-    const animeInputsButton = (topOption) => {
+        const animeInputsButton = (topOption) => {
         setAnimeUrl(topOption)
         setChosenAniOption(topOption)
         }
@@ -33,6 +32,7 @@ const AnimeInputs = () => {
         </StyledInputs>
     )
 }
+
 
 export default AnimeInputs
 

@@ -28,6 +28,8 @@ const DarkModeContainer = styled.div`
     position: absolute; 
     @media ${device.mobileS}{ 
         flex-direction: column;
+        right: 0.5em;
+        top: 1.5em;
     }
     right: 2em;
     top: 2.2em;
@@ -38,10 +40,11 @@ const DarkModeC = () => {
     const [mobileIcon, setMobileIcon] = useState('')
     const { mode, setMode } = useContext(ModeContext);
     const matches = useMediaQuery(device.mobileS);
-    //console.log(matches)
+    
     const onCheckboxChange = (e) => {
         setMode(e.target.checked)
         };
+        
         useEffect(() => {
             if((matches === true) && (mode === false)){
                 setMobileIcon(<MobileMoonIcon />) 
@@ -55,7 +58,8 @@ const DarkModeC = () => {
         }
 }, [matches, mode])
     return (
-            <DarkModeContainer>
+           
+           <DarkModeContainer>
                {mobileIcon}
     { matches === true ? '' : <SunIcon /> }  
                 <Switch onChange={onCheckboxChange} color="primary" inputProps={{ 'aria-label': 'secondary checkbox' }} checked={mode} />
