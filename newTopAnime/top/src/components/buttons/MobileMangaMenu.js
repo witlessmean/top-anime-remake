@@ -4,7 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import {MobileMainButton} from '../../reusableStyles';
 import {MangaUrlContext} from '../../contexts/MangaUrlContext' ;
 import {ChosenMangaOptionContext} from '../../contexts/ChosenMangaOptionContext';
-
+import { StyledNavLink } from '../../reusableStyles';
 
 const MobileMangaMenu = () => {
     
@@ -28,9 +28,9 @@ const MobileMangaMenu = () => {
     return (
       
       <div>
-            <MobileMainButton variant="contailed" color="primary" aria-controls="simple-menu" aria-haspopup="true" onClick={handleMenuClick}>
+           <StyledNavLink to="/manga"> <MobileMainButton variant="contailed" color="primary" aria-controls="simple-menu" aria-haspopup="true" onClick={handleMenuClick}>
               Manga
-            </MobileMainButton>
+            </MobileMainButton></StyledNavLink>
             <Menu 
         anchorEl={menuAnchor}
         keepMounted
