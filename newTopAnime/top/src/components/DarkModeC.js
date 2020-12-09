@@ -35,25 +35,25 @@ const DarkModeContainer = styled.div`
 
 const DarkModeC = () => {
    
-    const [mobileIcon, setMobileIcon] = useState(<MobileMoonIcon style={{fontSize: '3rem'}} />)
+    const [mobileIcon, setMobileIcon] = useState('')
     const { mode, setMode } = useContext(ModeContext);
     const matches = useMediaQuery(device.mobileS);
     //console.log(matches)
     const onCheckboxChange = (e) => {
         setMode(e.target.checked)
         };
-console.log(mode)
-useEffect(() => {
-    
-        if((matches === true) && (mode === false)){
-            setMobileIcon(<MobileMoonIcon />) 
-        }else if((matches === true) && (mode === true)){
-               setMobileIcon('') 
+        useEffect(() => {
+            if((matches === true) && (mode === false)){
+                setMobileIcon(<MobileMoonIcon />) 
+            }else if((matches === true) && (mode === true)){
+                setMobileIcon(<MobileSunIcon />) 
+            }else {
+                setMobileIcon('')
+            } 
+            //console.log(`mode: ${mode}`, `matches: ${matches}`)
+            return () => {
         }
-      return () => {
-        
-    }
-}, [mode])
+}, [matches, mode])
     return (
             <DarkModeContainer>
                { mobileIcon }
