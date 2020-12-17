@@ -28,8 +28,8 @@ const DarkModeContainer = styled.div`
     position: absolute; 
     @media ${device.mobileS}{ 
         flex-direction: column;
-        right: 0.5em;
-        top: 1.5em;
+        right: 0em;
+        top: 1em;
     }
     right: 2em;
     top: 2.2em;
@@ -40,7 +40,8 @@ const DarkModeC = () => {
     const [mobileIcon, setMobileIcon] = useState('')
     const { mode, setMode } = useContext(ModeContext);
     const matches = useMediaQuery(device.mobileS);
-    
+    const matchesLaptop = useMediaQuery(device.laptop);
+
     const onCheckboxChange = (e) => {
         setMode(e.target.checked)
         };
@@ -56,7 +57,7 @@ const DarkModeC = () => {
             //console.log(`mode: ${mode}`, `matches: ${matches}`)
             return () => {
         }
-}, [matches, mode])
+}, [matches, matchesLaptop, mode])
     
     return (
            

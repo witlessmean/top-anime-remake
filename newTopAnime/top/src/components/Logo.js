@@ -5,9 +5,16 @@ import { device } from '../utils/mediaBreakPoints';
 const StyledLogo = styled.div`
  
  @media ${device.mobileS}{
-         font-size: 3.2rem;
+         font-size: 3rem;
          margin-left: 0.2em;
          margin-top: 0.2em;
+ }
+ @media ${device.mobileM}{
+         font-size: 3.4rem;
+         margin-top: 0;
+ }
+ @media ${device.tablet}{
+         font-size: 4.7rem;
  }
 
  font-family: 'Lobster Two', cursive;

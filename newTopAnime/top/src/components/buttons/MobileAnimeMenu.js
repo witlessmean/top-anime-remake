@@ -1,10 +1,9 @@
 import React, {useState, useContext} from 'react'
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import {MobileMainButton} from '../../reusableStyles';
+import {MobileMainButton, StyledMenu, StyledMenuItem} from '../../reusableStyles';
 import {AnimeUrlContext} from '../../contexts/AnimeUrlContext' ;
 import {ChosenAniOptionContext} from '../../contexts/ChosenAniOptionContext';
 import { StyledNavLink } from '../../reusableStyles';
+
 
 const MobileAnimeMenu = () => {
     
@@ -28,41 +27,42 @@ const MobileAnimeMenu = () => {
     return (
       
       <div>
-            <StyledNavLink to="/"><MobileMainButton variant="contailed" color="primary" aria-controls="simple-menu" aria-haspopup="true" onClick={handleMenuClick}>
+            <StyledNavLink to="/"><MobileMainButton variant="contained" color="primary" aria-controls="simple-menu" aria-haspopup="true" onClick={handleMenuClick}>
               Anime
             </MobileMainButton></StyledNavLink>
-            <Menu 
+            <StyledMenu 
         anchorEl={menuAnchor}
         keepMounted
         open={Boolean(menuAnchor)}
         onClose={handleMenuClose}
       >
-        <MenuItem onClick={() => { 
+        <StyledMenuItem 
+        onClick={() => { 
           handleMenuClose(); 
-          animeInputsButton('upcoming')}}>Upcoming</MenuItem>
-        <MenuItem onClick={() => { 
+          animeInputsButton('upcoming')}}>Upcoming</StyledMenuItem>
+        <StyledMenuItem onClick={() => { 
           handleMenuClose(); 
-          animeInputsButton('airing')}}>airing</MenuItem>
-        <MenuItem onClick={() => { 
+          animeInputsButton('airing')}}>airing</StyledMenuItem>
+        <StyledMenuItem onClick={() => { 
           handleMenuClose(); 
-          animeInputsButton('tv')}}>tv</MenuItem>
-        <MenuItem onClick={() => { 
+          animeInputsButton('tv')}}>tv</StyledMenuItem>
+        <StyledMenuItem onClick={() => { 
           handleMenuClose(); 
-          animeInputsButton('movie')}}>movie</MenuItem>
-        <MenuItem onClick={() => { 
+          animeInputsButton('movie')}}>movie</StyledMenuItem>
+        <StyledMenuItem onClick={() => { 
           handleMenuClose(); 
-          animeInputsButton('ova')}}>ova</MenuItem>
-        <MenuItem onClick={() => { 
+          animeInputsButton('ova')}}>ova</StyledMenuItem>
+        <StyledMenuItem onClick={() => { 
           handleMenuClose(); 
-          animeInputsButton('special')}}>special</MenuItem>
-        <MenuItem onClick={() => { 
+          animeInputsButton('special')}}>special</StyledMenuItem>
+        <StyledMenuItem onClick={() => { 
           handleMenuClose(); 
-          animeInputsButton('bypopularity')}}>bypopularity</MenuItem>
-        <MenuItem onClick={() => { 
+          animeInputsButton('bypopularity')}}>bypopularity</StyledMenuItem>
+        <StyledMenuItem onClick={() => { 
           handleMenuClose(); 
-          animeInputsButton('favorite')}}>favorite</MenuItem>
+          animeInputsButton('favorite')}}>favorite</StyledMenuItem>
 
-    </Menu>
+    </StyledMenu>
     </div>
       
       )

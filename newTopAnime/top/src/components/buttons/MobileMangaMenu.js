@@ -1,10 +1,8 @@
 import React, {useState, useContext} from 'react'
 import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import {MobileMainButton} from '../../reusableStyles';
+import {MobileMainButton, StyledMenuItem, StyledNavLink} from '../../reusableStyles';
 import {MangaUrlContext} from '../../contexts/MangaUrlContext' ;
 import {ChosenMangaOptionContext} from '../../contexts/ChosenMangaOptionContext';
-import { StyledNavLink } from '../../reusableStyles';
 
 const MobileMangaMenu = () => {
     
@@ -28,7 +26,7 @@ const MobileMangaMenu = () => {
     return (
       
       <div>
-           <StyledNavLink to="/manga"> <MobileMainButton variant="contailed" color="primary" aria-controls="simple-menu" aria-haspopup="true" onClick={handleMenuClick}>
+           <StyledNavLink to="/manga"> <MobileMainButton style={{margin: '0.5em'}} variant="contained" color="primary" aria-controls="simple-menu" aria-haspopup="true" onClick={handleMenuClick}>
               Manga
             </MobileMainButton></StyledNavLink>
             <Menu 
@@ -37,31 +35,30 @@ const MobileMangaMenu = () => {
         open={Boolean(menuAnchor)}
         onClose={handleMenuClose}
       >
-        <MenuItem onClick={() => { 
+        <StyledMenuItem onClick={() => { 
           handleMenuClose(); 
-          mangaInputsButton('manga')}}>manga</MenuItem>
-        <MenuItem onClick={() => { 
+          mangaInputsButton('manga')}}>manga</StyledMenuItem>
+        <StyledMenuItem onClick={() => { 
           handleMenuClose(); 
-          mangaInputsButton('novels')}}>novels</MenuItem>
-        <MenuItem onClick={() => { 
+          mangaInputsButton('novels')}}>novels</StyledMenuItem>
+        <StyledMenuItem onClick={() => { 
           handleMenuClose(); 
-          mangaInputsButton('oneshots')}}>oneshots</MenuItem>
-        <MenuItem onClick={() => { 
+          mangaInputsButton('oneshots')}}>oneshots</StyledMenuItem>
+        <StyledMenuItem onClick={() => { 
           handleMenuClose(); 
-          mangaInputsButton('doujin')}}>doujin</MenuItem>
-        <MenuItem onClick={() => { 
+          mangaInputsButton('doujin')}}>doujin</StyledMenuItem>
+        <StyledMenuItem onClick={() => { 
           handleMenuClose(); 
-          mangaInputsButton('manhwa')}}>manhwa</MenuItem>
-        <MenuItem onClick={() => { 
+          mangaInputsButton('manhwa')}}>manhwa</StyledMenuItem>
+        <StyledMenuItem onClick={() => { 
           handleMenuClose(); 
-          mangaInputsButton('manhua')}}>manhua</MenuItem>
-        <MenuItem onClick={() => { 
+          mangaInputsButton('manhua')}}>manhua</StyledMenuItem>
+        <StyledMenuItem onClick={() => { 
           handleMenuClose(); 
-          mangaInputsButton('bypopularity')}}>bypopularity</MenuItem>
-        <MenuItem onClick={() => { 
+          mangaInputsButton('bypopularity')}}>bypopularity</StyledMenuItem>
+        <StyledMenuItem onClick={() => { 
           handleMenuClose(); 
-          mangaInputsButton('favorite')}}>favorite</MenuItem>
-
+          mangaInputsButton('favorite')}}>favorite</StyledMenuItem>
     </Menu>
     </div>
       

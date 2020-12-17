@@ -1,16 +1,17 @@
 import styled from 'styled-components';
-import { device } from './utils/mediaBreakPoints';
+import { withStyles } from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom';
 import Tooltip from '@material-ui/core/Tooltip';
-import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import MoodIcon from '@material-ui/icons/Mood';
 import MoodBadIcon from '@material-ui/icons/MoodBad';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
-
+import { device } from './utils/mediaBreakPoints';
 
 ////wrapper for the map////
 export const Wrapper = styled.section`
@@ -37,10 +38,6 @@ overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;  
-  @media ${device.mobileS} {
-      width: 230px;
-      height: 300px;
-      } 
   } 
 ////selects the info div within the styled container
   div:nth-child(2) { 
@@ -132,30 +129,18 @@ export const CustomMainButton = withStyles({
   },
 })(Button);
 
-export const OpenInputButton = withStyles({
-  root: {
-    variant: 'contained',
-    color: 'primary',
-    type: "button",
-    size: 'large'
-  }
-})(Button);
-
 export const MobileMainButton = withStyles({
   root: {
-    width: '5vw',
+    width: '2vw',
     height: '2.5em',
-    fontWeight: 'bolder',
-    fontSize: 17,
+    //fontWeight: 'bolder',
+    fontSize: '1.4rem',
     '&:active': {
       boxShadow: 'none',
       backgroundColor: '#c4dbf5',
       borderColor: '#005cbf',
     },
-    '&:focus': {
-      boxShadow: '0 0 0 0.2rem rgba(0,120,255,.8)',
-    },
-  },
+},
 })(Button);
 
 ////material-ui icons
@@ -202,6 +187,23 @@ export const MobileMoonIcon = withStyles({
     color: '#f7f7f7'
   }
 })(Brightness4Icon);
+
+////mobile menu styles
+
+export const StyledMenu = withStyles({
+  paper: {
+    border: '1px solid #d3d4d5',
+  },
+})(Menu)
+
+export const StyledMenuItem = withStyles((theme) => ({
+  root: {
+      fontSize: '1.6rem'
+  
+    },
+ 
+
+}))(MenuItem);
 
 
   //we will build out the container. i want the images as large as they can be. what we will do to compensate for this, is build out the container that they're all in to be the same size, and we will hide overflow. 
