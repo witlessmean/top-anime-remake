@@ -19,9 +19,9 @@ import { MangaOpenContext } from './contexts/MangaOpenContext';
 import { ModeContext } from './contexts/ModeContext';
 import { UpContext } from './contexts/UpContext';
 import LoadingCircle from './components/LoadingCircle';
-import {useSpring, animated} from 'react-spring';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import storage from 'local-storage-fallback';
+import {useSpring} from 'react-spring';
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -100,8 +100,11 @@ const App = () => {
     const mangaPromise = apiData.get(`/manga/1/${mangaUrl}`);
     const abortController = new AbortController();
     const signal = abortController.signal
+    
     setLoading(true);
-      Promise.all([animePromise, mangaPromise], {signal}).then((promiseContent) => {
+      
+    Promise.all([animePromise, mangaPromise], {signal}).then((promiseContent) =>
+     {
           setAnimeData(promiseContent[0].data.top);
           setMangaData(promiseContent[1].data.top);
           setCurrentAnimePics(promiseContent[0].data.top);
@@ -125,9 +128,6 @@ useEffect(() => {
   }
 }, [mode]);
 
-  
-const AnimatedAnimePage = animated(AnimePage);
-//const springProps = useSpring({opacity: 1, from: {opacity: 0}})
   return (
       <ThemeProvider theme={{mode}}>
       <>
@@ -148,7 +148,7 @@ const AnimatedAnimePage = animated(AnimePage);
         <MangaDataContext.Provider value={{ mangaData, setMangaData }}>
         <Nav style={{margin: 100}} />
         <Switch>
-        <Route exact path="/"> { loading === true ? <LoadingCircle>Loading....</LoadingCircle> : <AnimatedAnimePage/>} </Route>
+        <Route exact path="/"> { loading === true ? <LoadingCircle>Loading....</LoadingCircle> : <AnimePage/>} </Route>
         <Route path="/manga"> { loading === true ? <LoadingCircle>Loading....</LoadingCircle> : <MangaPage/>} </Route>
         </Switch>
       </MangaDataContext.Provider>

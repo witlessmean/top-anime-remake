@@ -14,7 +14,7 @@ const StyledLogo = styled.div`
          margin-top: 0;
  }
  @media ${device.tablet}{
-         font-size: 4.7rem;
+         font-size: 4rem;
  }
 
  font-family: 'Lobster Two', cursive;
