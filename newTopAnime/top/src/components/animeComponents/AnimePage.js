@@ -1,10 +1,12 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
+import MobileReveal from '../buttons/MobileReveal';
 import { CurrentAnimePicsContext } from '../../contexts/CurrentAnimePicsContext';
 import { v4 as uuidv4 } from "uuid";
 import { StyledContainer, StyledInfoContainer ,Wrapper } from '../../reusableStyles'
 import { CustomTooltip, GoodMoodIcon, BadMoodIcon } from '../../reusableStyles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {useSpring, animated} from 'react-spring';
+import {device} from '../../utils/mediaBreakPoints';
 
 
 const AnimePage = () => {
@@ -13,6 +15,18 @@ const { currentAnimePics } = useContext(CurrentAnimePicsContext);
 const springProps = useSpring({opacity: 1, from: {opacity: 0}});
 //simple way to integrate styled-components with animated from react-spring
 const AnimatedWrapper = animated(Wrapper);
+const matchesMobileSmall = useMediaQuery(device.mobileS);
+const matchesMobileTablet = useMediaQuery(device.tablet);
+
+const mobileRevealFunc = () => {
+  if(matchesMobileSmall){
+    return <MobileReveal />
+  }else if(matchesMobileTablet){
+    return undefined;
+  }
+}
+
+
 
 
 

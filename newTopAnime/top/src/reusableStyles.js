@@ -7,8 +7,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoodIcon from '@material-ui/icons/Mood';
 import MoodBadIcon from '@material-ui/icons/MoodBad';
-import WbSunnyIcon from '@material-ui/icons/WbSunny';
-import Brightness3Icon from '@material-ui/icons/Brightness3';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import { device } from './utils/mediaBreakPoints';
@@ -29,10 +29,15 @@ border-radius: 8px;
 border: 1.7px solid rgba(0,0,0, 0.5);
 margin: 15px 10px;
 background-color:rgba(27, 23, 23, 0.1);
-width: 400px;
-height: 300px;
 display: flex;
 overflow: hidden; 
+@media ${device.tablet}{
+  width: 400px;
+  height: 300px;
+};
+@media ${device.mobileS}{
+  position: relative;
+}
 ////selects the img div within the styled container
  div:nth-child(1) { 
   display: flex;
@@ -45,6 +50,12 @@ overflow: hidden;
   }
   `
 export const StyledInfoContainer = styled.div`
+@media ${device.mobileS}{
+  position: absolute;
+};
+@media ${device.tablet}{
+  position: static;
+}
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -158,22 +169,6 @@ export const BadMoodIcon = withStyles({
   }
 })(MoodBadIcon);
 
-export const SunIcon = withStyles({
-  
-  root: {
-    fontSize: '4rem',
-    marginRight: '0.2em',
-    color: '#f7f7f7'
-  }
-})(WbSunnyIcon);
-
-export const MoonIcon = withStyles({
-  root: {
-    fontSize: '4rem',
-    color: '#f7f7f7'
-  }
-})(Brightness3Icon);
-
 export const MobileSunIcon = withStyles({
   root: {
     fontSize: '3rem',
@@ -188,6 +183,18 @@ export const MobileMoonIcon = withStyles({
   }
 })(Brightness4Icon);
 
+export const UpIcon = withStyles({
+  root: {
+    fontSize: '4rem'
+  }
+})(ExpandLessIcon);
+
+export const DownIcon = withStyles({
+  root: {
+    fontSize: '4rem'
+  }
+})(ExpandMoreIcon);
+
 ////mobile menu styles
 
 export const StyledMenu = withStyles({
@@ -201,9 +208,7 @@ export const StyledMenuItem = withStyles((theme) => ({
       fontSize: '1.6rem'
   
     },
- 
-
-}))(MenuItem);
+ }))(MenuItem);
 
 
   //we will build out the container. i want the images as large as they can be. what we will do to compensate for this, is build out the container that they're all in to be the same size, and we will hide overflow. 

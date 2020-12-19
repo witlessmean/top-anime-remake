@@ -89,7 +89,7 @@ const displayMenuType = () => {
     )
   }
 }
-    console.log(matches, matchesLaptop)
+    //console.log(matches, matchesLaptop)
     return (
        <>
        <Logo/>

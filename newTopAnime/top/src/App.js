@@ -17,6 +17,7 @@ import { ChosenMangaOptionContext } from './contexts/ChosenMangaOptionContext';
 import { AniOpenContext } from './contexts/AniOpenContext';
 import { MangaOpenContext } from './contexts/MangaOpenContext';
 import { ModeContext } from './contexts/ModeContext';
+import { UpContext } from './contexts/UpContext';
 import LoadingCircle from './components/LoadingCircle';
 import {useSpring, animated} from 'react-spring';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
@@ -92,13 +93,15 @@ const App = () => {
   const [mangaOpen, setMangaOpen] = useState(undefined);
   const [loading, setLoading] = useState(true);
   const [mode, setMode] = useState(getInitialTheme);
-  
+  const [up, setUp] = useState(true);
+
   useEffect(() => {
     const animePromise = apiData.get(`/anime/1/${animeUrl}`);
     const mangaPromise = apiData.get(`/manga/1/${mangaUrl}`);
     const abortController = new AbortController();
-      Promise.all([animePromise, mangaPromise]).then((promiseContent) => {
-          setLoading(true);
+    const signal = abortController.signal
+    setLoading(true);
+      Promise.all([animePromise, mangaPromise], {signal}).then((promiseContent) => {
           setAnimeData(promiseContent[0].data.top);
           setMangaData(promiseContent[1].data.top);
           setCurrentAnimePics(promiseContent[0].data.top);
@@ -115,9 +118,10 @@ const App = () => {
   }, [animeUrl, mangaUrl])
 
 useEffect(() => {
-    storage.setItem('theme', JSON.stringify(mode))
+  const abortController = new AbortController();
+  storage.setItem('theme', JSON.stringify(mode))
   return () => {
-    
+    abortController.abort();
   }
 }, [mode]);
 
@@ -128,6 +132,7 @@ const AnimatedAnimePage = animated(AnimePage);
       <ThemeProvider theme={{mode}}>
       <>
       <Router>
+      <UpContext.Provider value={{up, setUp}}>
       <ModeContext.Provider value={{mode, setMode}}>
       <GlobalStyle />
      <CurrentAnimePicsContext.Provider value={{currentAnimePics,setCurrentAnimePics}}>
@@ -158,6 +163,7 @@ const AnimatedAnimePage = animated(AnimePage);
       </CurrentMangaPicsContext.Provider>
       </CurrentAnimePicsContext.Provider>
       </ModeContext.Provider>
+      </UpContext.Provider>
     </Router>
     </>
     </ThemeProvider>
