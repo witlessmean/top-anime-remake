@@ -10,26 +10,16 @@ const StyledMobileArrow = styled.div`
 const MobileReveal = () => {
     
     const [arrowState, setArrowState] = useState(<UpIcon />)
-    const {up, setUp} = useContext(UpContext);
+    const [up, setUp] = useState(true);
     
     
     useEffect(()=>{
-        
-        const abortController = new AbortController();
-        
-        
         if(up === true){
           setArrowState(<UpIcon />)
         }else if(up === false){
           setArrowState(<DownIcon />)
         } 
-        
-        return function cleanup(){
-            abortController.abort();
-        }
   }, [up]);
-
-  console.log(up)
 
   return (
         <StyledMobileArrow>

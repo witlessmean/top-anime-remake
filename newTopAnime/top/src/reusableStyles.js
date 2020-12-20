@@ -185,13 +185,13 @@ export const MobileMoonIcon = withStyles({
 
 export const UpIcon = withStyles({
   root: {
-    fontSize: '4rem'
+    fontSize: '10rem'
   }
 })(ExpandLessIcon);
 
 export const DownIcon = withStyles({
   root: {
-    fontSize: '4rem'
+    fontSize: '10rem'
   }
 })(ExpandMoreIcon);
 

@@ -24,14 +24,14 @@ const DarkModeC = () => {
     const [mobileIcon, setMobileIcon] = useState('')
     const { mode, setMode } = useContext(ModeContext);
     const matches = useMediaQuery(device.mobileS);
-    const abortController = new AbortController();
 
     const onCheckboxChange = (e) => {
         setMode(e.target.checked)
         };
         
         useEffect(() => {
-                mode === false ? setMobileIcon(<MobileMoonIcon/>) : setMobileIcon(<MobileSunIcon/>)
+            const abortController = new AbortController();
+            mode === false ? setMobileIcon(<MobileMoonIcon/>) : setMobileIcon(<MobileSunIcon/>)
       
             //console.log(`mode: ${mode}`, `matches: ${matches}`)
             return () => { abortController.abort()
