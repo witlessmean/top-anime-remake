@@ -67,4 +67,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
-canva/coolors/gimp
+//import structure, how to use application, application api, stack choices and package choices - private browsing has made window.localstorage a bit unreliable, so i have imported localstorage fallback. looking to expland on accessibility

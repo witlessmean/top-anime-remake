@@ -56,16 +56,16 @@ const { mangaOpen } = useContext(MangaOpenContext);
 const displayOption = (aniOpen, mangaOpen) => {
   
   if(location.pathname === '/manga'){
-    return <ChosenMangaOptionC/>
+    return <ChosenMangaOptionC />
   }else if ((aniOpen === undefined) && (mangaOpen === undefined)){
- return <ChosenAniOptionC/> }
+ return <ChosenAniOptionC /> }
  else if((mangaOpen === true) && (aniOpen === false)){
    return <ChosenMangaOptionC />                                     
  }else if((mangaOpen === false) && (aniOpen === true)){
-    return <ChosenAniOptionC/>
+    return <ChosenAniOptionC />
  } else if((mangaOpen === undefined) && (aniOpen === false)){                                                     
  } else if((aniOpen === false) && (mangaOpen === undefined)){
-   return <ChosenAniOptionC/>
+   return <ChosenAniOptionC />
  }else if((aniOpen === undefined) && (mangaOpen === true)){
           return <ChosenMangaOptionC />
  }else {

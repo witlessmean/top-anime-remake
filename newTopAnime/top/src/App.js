@@ -1,8 +1,6 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
 import Nav from "./components/Nav"
-import apiData from "./utils/api";
 import AnimePage from './components/animeComponents/AnimePage';
 import MangaPage from './components/mangaComponents/MangaPage';
 import { AnimeUrlContext } from "./contexts/AnimeUrlContext";
@@ -17,12 +15,12 @@ import { ChosenMangaOptionContext } from './contexts/ChosenMangaOptionContext';
 import { AniOpenContext } from './contexts/AniOpenContext';
 import { MangaOpenContext } from './contexts/MangaOpenContext';
 import { ModeContext } from './contexts/ModeContext';
-import { UpContext } from './contexts/UpContext';
 import LoadingCircle from './components/LoadingCircle';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import storage from 'local-storage-fallback';
-import {useSpring} from 'react-spring';
+import apiData from "./utils/api";
 
+//global styles including custom scrollbar. 
 const GlobalStyle = createGlobalStyle`
 html {
   font-size: 62.5%;  
@@ -55,7 +53,7 @@ html {
   background: #555;
 }
 
-
+//conditional styling for darkmode. I receive mode props from the material UI theme which wraps the app. 
     background-color: ${ (props) => {
             return props.theme.mode === true ? '#181818' : '#eae7dc'
     } 
@@ -93,7 +91,6 @@ const App = () => {
   const [mangaOpen, setMangaOpen] = useState(undefined);
   const [loading, setLoading] = useState(true);
   const [mode, setMode] = useState(getInitialTheme);
-  const [up, setUp] = useState(true);
 
   useEffect(() => {
     const animePromise = apiData.get(`/anime/1/${animeUrl}`);
@@ -127,12 +124,11 @@ useEffect(() => {
     abortController.abort();
   }
 }, [mode]);
-
+//The theme provider from material-ui is the way that I can actually add the mode props
   return (
-      <ThemeProvider theme={{mode}}>
-      <>
+    <>
       <Router>
-      <UpContext.Provider value={{up, setUp}}>
+        <ThemeProvider theme={{mode}}>
       <ModeContext.Provider value={{mode, setMode}}>
       <GlobalStyle />
      <CurrentAnimePicsContext.Provider value={{currentAnimePics,setCurrentAnimePics}}>
@@ -163,10 +159,9 @@ useEffect(() => {
       </CurrentMangaPicsContext.Provider>
       </CurrentAnimePicsContext.Provider>
       </ModeContext.Provider>
-      </UpContext.Provider>
+    </ThemeProvider>
     </Router>
     </>
-    </ThemeProvider>
   );
 };
 

@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { withStyles } from '@material-ui/core/styles';
-import { NavLink } from 'react-router-dom';
-import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoodIcon from '@material-ui/icons/Mood';
@@ -11,6 +10,7 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
+import { NavLink } from 'react-router-dom';
 import { device } from './utils/mediaBreakPoints';
 
 ////wrapper for the map////
@@ -37,6 +37,8 @@ overflow: hidden;
 };
 @media ${device.mobileS}{
   position: relative;
+  justify-content: center;
+  align-items: center;
 }
 ////selects the img div within the styled container
  div:nth-child(1) { 
@@ -185,16 +187,17 @@ export const MobileMoonIcon = withStyles({
 
 export const UpIcon = withStyles({
   root: {
-    fontSize: '10rem'
+    fontSize: '8rem',
+    color: 'rgba(245, 245, 245, 0.8)'
   }
 })(ExpandLessIcon);
 
 export const DownIcon = withStyles({
   root: {
-    fontSize: '10rem'
+    fontSize: '8rem',
+    color: 'rgba(245, 245, 245, 0.8)'
   }
 })(ExpandMoreIcon);
-
 ////mobile menu styles
 
 export const StyledMenu = withStyles({
@@ -211,90 +214,9 @@ export const StyledMenuItem = withStyles((theme) => ({
  }))(MenuItem);
 
 
-  //we will build out the container. i want the images as large as they can be. what we will do to compensate for this, is build out the container that they're all in to be the same size, and we will hide overflow. 
 
-  //also we need to be able to let the user know what kind of anime he's looking at AFTER he clicks on the button. and so with that being said, we will need to add an argument to the button so that when you click for example, the 'special' button, it will write special somewhere in big letters to let you know that's where you are. 
-
-  //to the container we will need to add the name, how many episodes it has etc. 
-
-  //click on titles themselves to be sent to myanimelist link. 
-
-  //score, rank, episodes, start date and end date
-
-  //if statement to be able to make anime/manga nav disappear
-
-  //add the text for what is clicked
-
-  //make components for the title etc
-
-  
-  
-  
-  
-  //loading spinner
-
-  //dark mode
-
-  //make title of button show
-
-  //make it so you can make nav disappear when you press on anime/manga button 
-
-  //break apart map parts into smaller components. 
-
-  //create logo 
-
-  //readme
-
-  //have cursor next to buttons and when clicked the cursor goes away. fades. 
-
-  //just design the fucking logo myself in paint. I only need to make 2 lines and i should be able to make a transparent background.
-
-  //add footer
-
-  //i want the button inputs to ease in and out. https://reactjs.org/docs/animation.html
-
-  //when i press anime/manga button, the inputs should appear under them. This is to avoid confusion considering that the manga btton will be right next to the inputs if i stay the current way.
-
-  //also right when the app starts, it should tell us that we're viewing airing. 
-
-  //maybe pass animeButton ANOTHER state and this state will have an open/closed or true/false. maybe somehow we can implement that/ 
-  //still have some console logging to do. maybe try and get into the navState object and see if we need to use that instead of just navState === something. 
-
-  //after app is finished, maybe get rid of animeData context all together. seems useless. 
-
-  //clean up this particular css page. we can use the arrows to make single lines and add nice glossary
-
-  //https://material-ui.com/customization/typography/   use this link to look at how to use mediaQ's for fonts inside the buttons. 
-
-  //if anime is open and i click manga i need to erase the option. 
-
-  //FAQ page
-
-  //fix all the imports to be in order/more readable
-
-  //useMemo
-
-  //when finished, find a better and brighter color scheme
-
-  //optimize css for faster load
-
-  //node_modules\.bin\cypress open
-
-  //react smooth scroll check out
-
-//write in nav or something directions with the hand icon to let users know that we can click on anime buttons and also the anime titles to go to myanimelist link. 
-
-
-//use the same opaque styling as ani chart, have an arrow that points down in case we want to see the whole picture. it will have a z index and be 100% width and height with a 0.5 opaque background
-
-//fix animations. animations happen before loading happens. think i need to use some async. 
-
-//change the MoodIcons and use withStyles in order to make it so we don't need to write the styles inline. Abstract as many of the inline styles as possible. 
-
-//we will use withStyles for all of the inputs as well. 
 
 //improve load performance https://www.youtube.com/watch?v=5fLW5Q5ODiE
 
-//mobilesmall will add absolutely positioned arrows that when clicked. use visibility hidden with selectors on all the shit. may need to change selector pattern. 
+//add footer with github link
 
-//maybe use console.trace to figure out animations?

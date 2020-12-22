@@ -22,18 +22,18 @@ return (
             <StyledNavLink to="/manga" style={{marginLeft: '10%'}} ><CustomMainButton variant="contained" color="primary"  onClick={() => {
                 
                 
-                if((aniOpen === undefined && mangaOpen === undefined) || (mangaOpen === undefined && aniOpen === false) ){
+                if((aniOpen === undefined) && (mangaOpen === undefined) || (mangaOpen === undefined) && (aniOpen === false)){
                     setMangaOpen(true)
                     setNavState(<MangaInputs/>)
                    
-                } else if(mangaOpen === true && aniOpen === undefined){
+                } else if((mangaOpen === true) && (aniOpen === undefined)){
                             setMangaOpen(false)
                             setNavState([])
-                }else if(aniOpen === true || aniOpen === undefined ){
+                }else if((aniOpen === true) || (aniOpen === undefined)){
                        setAniOpen(false)
                        setMangaOpen(true) 
                        setNavState(<MangaInputs/>)
-                }else if(aniOpen === false && mangaOpen === false){
+                }else if((aniOpen === false) && (mangaOpen === false)){
                         setMangaOpen(true)
                         setAniOpen(false)
                         setNavState(<MangaInputs/>)

@@ -20,19 +20,18 @@ return (
         <div>
             <StyledNavLink to="/" ><CustomMainButton type="button" variant="contained" color="primary" onClick={(e) => {
                
-               
-               if((aniOpen === undefined && mangaOpen === undefined) || (aniOpen === undefined && mangaOpen === false) ){
+               if((aniOpen === undefined) && (mangaOpen === undefined) || (aniOpen === undefined) && (mangaOpen === false) ){
                     setAniOpen(true)
                     setNavState(<AnimeInputs/>)
                    
-                }else if(aniOpen === true && mangaOpen === undefined){
+                }else if((aniOpen === true) && (mangaOpen === undefined)){
                     setAniOpen(undefined)
                     setNavState([])
-                } else if(mangaOpen === true || mangaOpen === undefined ){
+                } else if((mangaOpen === true) || (mangaOpen === undefined)){
                        setMangaOpen(false)
                        setAniOpen(true) 
                        setNavState(<AnimeInputs/>)
-                }else if(aniOpen === false && mangaOpen === false){
+                }else if((aniOpen === false) && (mangaOpen === false)){
                     setAniOpen(true)
                     setMangaOpen(false)
                     setNavState(<AnimeInputs/>)
