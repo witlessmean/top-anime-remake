@@ -8,7 +8,6 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useSpring, animated } from 'react-spring';
 import { device } from '../../utils/mediaBreakPoints';
 import styled, { ThemeProvider } from 'styled-components';
-import { Info } from '@material-ui/icons';
 
 
 
