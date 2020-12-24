@@ -39,6 +39,7 @@ overflow: hidden;
   position: relative;
   justify-content: center;
   align-items: center;
+  height: 300px;
 }
 ////selects the img div within the styled container
  div:nth-child(1) { 
@@ -90,6 +91,12 @@ margin-top: 0.5vh;
 div:nth-child(6) {
 margin-top: 0.5vh;
 }
+//This will determine whether or not the info container is visible on smaller screen sizes. The props come from MUI theme in the AnimePage component. 
+display: ${ (props) => {
+  return props.theme.matchesMobileSmall ? 'none' : 'unset'
+} 
+  }
+
 `
 /////////////Inputs/////////////
 export const StyledInputs = styled.div`

@@ -2,8 +2,6 @@ import React, { useState, useEffect, useContext, createContext } from 'react'
 import { UpIcon, DownIcon } from '../../reusableStyles';
 import { IconButton } from '@material-ui/core';
 import styled, { ThemeProvider } from 'styled-components';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { device } from '../../utils/mediaBreakPoints';
 
 const StyledMobileArrow = styled.div`
 position: absolute;
@@ -11,17 +9,18 @@ text-align: center;
 bottom: 0;
 background-color: rgba(0, 0, 0, 0.6);
 height: ${ (props) => {
-  return props.theme.up === true ? '16%' : '100%'
+  return props.theme.up === true ? '16% ' : '100% '
 } 
   };
+//not sure whether or not to use this
+/* transform: ${(props) => props.theme.up ? 'rotate(0deg)' : 'rotate(360deg)'};
+  transition: transform .3s ease-out; */
+
 width: 100%;
 `
 
 //parentUp props is how I can communicate up to the parent. 
 const MobileReveal = ({parentUp, setParentUp}) => {
-    
-    const matchesMobileSmall = useMediaQuery(device.mobileS);
-    const matchesMobileTablet = useMediaQuery(device.tablet);
     
     const [arrowState, setArrowState] = useState(<UpIcon />)
     const [up, setUp] = useState(true);
@@ -58,14 +57,16 @@ const MobileReveal = ({parentUp, setParentUp}) => {
 
 
 
-   return (
-       <ThemeProvider theme={{up}}>
-       <StyledMobileArrow>
-    <IconButton onClick={() => up ? setUp(false) : setUp(true) } >
+return (
+
+  <ThemeProvider theme={{up}}>
+    <StyledMobileArrow>
+      <IconButton style={{position: 'absolute', bottom: '-27px'}} onClick={() => up ? setUp(false) : setUp(true) } >
       {arrowState}
-    </IconButton>
-        </StyledMobileArrow>
-        </ThemeProvider>
+      </IconButton>
+    </StyledMobileArrow>
+  </ThemeProvider>
+     
     )
 }
 
@@ -73,3 +74,8 @@ const MobileReveal = ({parentUp, setParentUp}) => {
 export default MobileReveal
 
 
+//click on button to make visible/not visible. maybe add title to box? 
+
+//i press a button, that button interacts with up in the useEffect. Can I run a function in that same useEffect to render the style? 
+
+//add topPic.name component considering i need to have it at the bottom of the container on mobile. 
