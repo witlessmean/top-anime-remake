@@ -91,11 +91,14 @@ margin-top: 0.5vh;
 div:nth-child(6) {
 margin-top: 0.5vh;
 }
-//This will determine whether or not the info container is visible on smaller screen sizes. The props come from MUI theme in the AnimePage component. 
+
+
+//This is saying that if the reveal function(which is the function that determines whether or not mobileReveal component is mounted) is fired, 
+//return props.theme.reveal() ? 'none' : 'unset'
 display: ${ (props) => {
-  return props.theme.matchesMobileSmall ? 'none' : 'unset'
+  return props.theme.reveal() ? 'none' : 'unset'
 } 
-  }
+  };
 
 `
 /////////////Inputs/////////////
