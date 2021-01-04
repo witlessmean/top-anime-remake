@@ -26,7 +26,7 @@ const MobileReveal = ({parentUp, setParentUp}) => {
     const [arrowState, setArrowState] = useState(<UpIcon />)
     const [up, setUp] = useState(true);
     
- //code that simply writes all of this without a promise into one useEffect will cause a memory leak. For example, if I were to write  if(up === true) setUpIcon and setParentUp to up right after that, the parent would not actually know what up was yet. So I use a promise to make sure the operation happens. 
+ //code that simply writes all of this without a promise into one useEffect will cause a memory leak. For example, if I were to write  if(up === true) setUpIcon and setParentUp to up right after that, the parent would not actually know what up was yet. So I use a promise to make sure the operation happens. nestedOp stands for nestedOperation. 
   const nestedOp = () => {
   if(up === true){
     setArrowState(<UpIcon />);
@@ -61,9 +61,10 @@ const MobileReveal = ({parentUp, setParentUp}) => {
 return (
 
   <ThemeProvider theme={{up}}>
-    <MobileInfoTextReveal up={up} />
+    
     <StyledMobileArrow>
       <IconButton style={{position: 'absolute', bottom: '-27px'}} onClick={() => up ? setUp(false) : setUp(true) } >
+      <MobileInfoTextReveal />
       {arrowState}
       </IconButton>
     </StyledMobileArrow>
@@ -76,13 +77,5 @@ return (
 export default MobileReveal
 
 
-//click on button to make visible/not visible. maybe add title to box? 
-
-//i press a button, that button interacts with up in the useEffect. Can I run a function in that same useEffect to render the style? 
-
-//add topPic.name component considering i need to have it at the bottom of the container on mobile. 
 
 
-//maybe have ANOTHER box inside the container. this will be the map function AGAIN. and it will have the name at the top in order for the name to show and it will also be at a certain perceentage. 
-
-//return to commit with long explanation if need to. 

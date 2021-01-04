@@ -20,6 +20,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import storage from 'local-storage-fallback';
 import apiData from "./utils/api";
 
+
 //global styles including custom scrollbar. 
 const GlobalStyle = createGlobalStyle`
 html {

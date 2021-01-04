@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import MobileReveal from '../buttons/MobileReveal';
 import { CurrentAnimePicsContext } from '../../contexts/CurrentAnimePicsContext';
 import { v4 as uuidv4 } from "uuid";
-import { StyledContainer ,Wrapper } from '../../reusableStyles'
+import { StyledContainer ,Wrapper, StyledInfoContainer, CustomTooltip, GoodMoodIcon, BadMoodIcon } from '../../reusableStyles'
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useSpring, animated } from 'react-spring';
 import { device } from '../../utils/mediaBreakPoints';
@@ -66,6 +66,17 @@ const reveal = () => {
 //   }
 // }, [parentUp])
 
+const [fontStyle, setFontStyle] = useState({fontSize: '0rem'})
+useEffect(() => {
+  if(parentUp === true){
+    setFontStyle({fontSize: '12rem'})
+  }else if(parentUp === false){
+    setFontStyle({fontSize: '0rem'})
+  }
+  return () => {
+   
+  }
+}, [parentUp])
 return (
       //  <ThemeProvider theme={{parentUp, reveal}}>
       //   <Wrapper>
@@ -77,11 +88,23 @@ return (
       //   </ThemeProvider>  
        
       //the theme will send this property all the way to reusableStyles. This is so handy because I can only use useMedia in a component. 
-       <ThemeProvider theme={{parentUp, matchesMobileSmall, reveal}}>
+      //  <ThemeProvider theme={{parentUp, matchesMobileSmall, reveal}}>
+      //   <Wrapper>
+      //             {currentAnimePics.map((topPic) => {
+      //     return  <AnimatedStyledContainer style={springState} key={uuidv4()}> 
+      //     {reveal()} <div><img src={topPic.image_url} alt='animeImg'/></div> {matchesMobileTablet ? infoContainerFunc(topPic.rank, topPic.score, topPic.url, topPic.title, topPic.startDate ,topPic.episodes, topPic.type) : undefined} </AnimatedStyledContainer> ;
+      //   })}
+      //   </Wrapper>
+      //   </ThemeProvider>  
+      
+    
+      
+      <ThemeProvider theme={{parentUp, matchesMobileSmall, reveal}}>
         <Wrapper>
                   {currentAnimePics.map((topPic) => {
           return  <AnimatedStyledContainer style={springState} key={uuidv4()}> 
-          {reveal()} <div><img src={topPic.image_url} alt='animeImg'/></div> {matchesMobileTablet ? infoContainerFunc(topPic.rank, topPic.score, topPic.url, topPic.title, topPic.startDate ,topPic.episodes, topPic.type) : undefined} </AnimatedStyledContainer> ;
+           <div><img src={topPic.image_url} alt='animeImg'/></div><StyledInfoContainer style={fontStyle}><div>rank:{topPic.rank}</div><div>rating:    {topPic.score}{ topPic.score > 7 ? <GoodMoodIcon /> : <BadMoodIcon/> }</div> <div> <CustomTooltip title="myanimelist link" placement="right"><a target="_blank" rel="noopener noreferrer" href={topPic.url}>{topPic.title}</a></CustomTooltip></div><div>{topPic.start_date}</div>{topPic.episodes > 0 ? <div>episodes: {topPic.episodes}</div> : <div>episodes: unknown</div>  }<div>type: {topPic.type}</div></StyledInfoContainer>
+           {reveal()} </AnimatedStyledContainer> ;
         })}
         </Wrapper>
         </ThemeProvider>  
@@ -89,6 +112,5 @@ return (
 };
 
 export default AnimePage
-
 
 

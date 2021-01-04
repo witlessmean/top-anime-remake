@@ -91,15 +91,12 @@ margin-top: 0.5vh;
 div:nth-child(6) {
 margin-top: 0.5vh;
 }
-
-
 //This is saying that if the reveal function(which is the function that determines whether or not mobileReveal component is mounted) is fired, 
 //return props.theme.reveal() ? 'none' : 'unset'
 display: ${ (props) => {
   return props.theme.reveal() ? 'none' : 'unset'
 } 
   };
-
 `
 /////////////Inputs/////////////
 export const StyledInputs = styled.div`
@@ -229,4 +226,3 @@ export const StyledMenuItem = withStyles((theme) => ({
 //improve load performance https://www.youtube.com/watch?v=5fLW5Q5ODiE
 
 //add footer with github link
-
